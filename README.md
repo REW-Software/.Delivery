@@ -1,24 +1,23 @@
-# README
+# PontoDelivery
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Organização:**
 
-Things you may want to cover:
+* [*REW-Software*](https://github.com/REW-Software)
+#
 
-* Ruby version
+**Colaboradores:**
 
-* System dependencies
+* [*José Romulo*](https://github.com/J-Romulo)
+* [*Ezequias Silva*](https://github.com/ezequias2d)
+* [*Weverton Cintra*](https://github.com/WevertonCintra)
+#
 
-* Configuration
+**Link para aplicação:**
 
-* Database creation
+🚀 [*Heroku*]()
+#
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Projeto desenvolvido para a disciplina de Engenharia de Software,
+#### do curso de Ciência da Computação,
+#### da Universidade Federal do Agreste de Pernambuco - UFAPE,
+#### com orientação do professor Rodrigo Cardoso Amaral de Andrade.
