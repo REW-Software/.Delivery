@@ -1,24 +1,23 @@
-# README
+# PontoDelivery
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Sobre**
 
-Things you may want to cover:
+Sistema de gerenciamento de vendas e entregas para pizzaria.
+Projeto desenvolvido para a disciplina de Engenharia de Software,
+do curso de Ciência da Computação,
+da Universidade Federal do Agreste de Pernambuco - UFAPE,
+com orientação do professor Rodrigo Cardoso Amaral de Andrade.
 
-* Ruby version
+**Organização:**
 
-* System dependencies
+*  [*REW-Software*](https://github.com/REW-Software)
 
-* Configuration
+**Colaboradores:**
 
-* Database creation
+*  [*José Romulo*](https://github.com/J-Romulo)
+*  [*Ezequias Silva*](https://github.com/ezequias2d)
+*  [*Weverton Cintra*](https://github.com/WevertonCintra)
 
-* Database initialization
+**Link para aplicação:**
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+🚀 [*Heroku*]()
