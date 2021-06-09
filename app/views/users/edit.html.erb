@@ -1,0 +1,70 @@
+<h1>Editar usuário</h1>
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @user.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :birth %><br>
+    <%= form.date_field :birth %>
+    <% @user.errors.full_messages_for(:birth).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :cpf %><br>
+    <%= form.text_field :cpf %>
+    <% @user.errors.full_messages_for(:cpf).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :rg %><br>
+    <%= form.text_field :rg %>
+    <% @user.errors.full_messages_for(:rg).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :street %><br>
+    <%= form.text_field :street %>
+    <% @user.errors.full_messages_for(:street).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :number %><br>
+    <%= form.text_field :number %>
+    <% @user.errors.full_messages_for(:number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :tipo %><br>
+    <%= form.text_field :tipo %>
+    <% @user.errors.full_messages_for(:tipo).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

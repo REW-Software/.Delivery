@@ -1,0 +1,30 @@
+<h1>Perfil de usuário</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Nascimento</th>
+    <th>Email</th>
+    <th>CPF</th>
+    <th>RG</th>
+    <th>Rua</th>
+    <th>Número</th>
+    <th>Tipo</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.name %></td>
+      <td><%= @user.birth %></td>
+      <td><%= @user.email %></td>
+      <td><%= @user.cpf %></td>
+      <td><%= @user.rg %></td>
+      <td><%= @user.street %></td>
+      <td><%= @user.number %></td>
+      <td><%= @user.tipo %></td>
+      <td><%= link_to "Editar", edit_user_path(@user) %></td>
+      <td><%= link_to "Deletar", user_path(@user), method: :delete,
+                      data: {confirm: "Você está seguro desta ação?"} %></td>
+    </tr>
+  </tbody>
+</table>
