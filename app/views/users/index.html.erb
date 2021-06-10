@@ -1,0 +1,18 @@
+<h1>Listagem de usuários</h1>
+<%= link_to "Adicionar usuário", new_user_path %>
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Tipo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user %></td>
+      <td><%= user.tipo %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
