@@ -1,0 +1,18 @@
+<h1>Produto</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Preço</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @product.name %></td>
+      <td><%= number_to_currency @product.price, unit: "R$" %></td>
+      <td><%= link_to "Editar", edit_product_path(@product) %></td>
+      <td><%= link_to "Deletar", product_path(@product), method: :delete,
+                      data: {confirm: "Você está seguro desta ação?"} %></td>
+    </tr>
+  </tbody>
+</table>
