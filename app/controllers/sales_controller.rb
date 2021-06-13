@@ -5,11 +5,12 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
+    @product = Product.find(@sale.product_id)
   end
 
   def new
     @sale = Sale.new
-    # @product = Product.all
+    @product = Product.all
   end
 
   def create
@@ -25,6 +26,7 @@ class SalesController < ApplicationController
 
   def edit
     @sale = Sale.find(params[:id])
+    @product = Product.all
   end
 
   def update
