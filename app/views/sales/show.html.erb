@@ -1,0 +1,28 @@
+<h1>Informações venda</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nome do cliente</th>
+    <th>Telefone</th>
+    <th>Rua</th>
+    <th>Número</th>
+    <th>Produto</th>
+    <th>Quantidade</th>
+    <th>Pagamento</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @sale.name_client %></td>
+    <td><%= @sale.phone_client %></td>
+    <td><%= @sale.street %></td>
+    <td><%= @sale.number %></td>
+    <td><%= @product.name %></td>
+    <td><%= @sale.quantity_product %></td>
+    <td><%= @sale.payment_type %></td>
+    <td><%= link_to "Editar", edit_sale_path(@sale) %></td>
+    <td><%= link_to "Deletar", sale_path(@sale), method: :delete,
+                    data: {confirm: "Você está seguro desta ação?"} %></td>
+  </tr>
+  </tbody>
+</table>
