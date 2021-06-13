@@ -1,0 +1,18 @@
+<h1>Listagem de usuários</h1>
+<%= link_to "Adicionar venda", new_sale_path %>
+<table>
+  <thead>
+  <tr>
+    <th>Cliente</th>
+    <th>Telefone</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @sales.each do |sale| %>
+    <tr>
+      <td><%= link_to sale.name_client, sale %></td>
+      <td><%= sale.phone_client %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
