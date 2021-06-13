@@ -2,7 +2,7 @@
 <%= form_with model: @user do |form| %>
   <div>
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name , id: "newUserName"  %>
     <% @user.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -10,7 +10,7 @@
 
   <div>
     <%= form.label :birth %><br>
-    <%= form.date_field :birth %>
+    <%= form.date_field :birth , id: "newUserBirth"  %>
     <% @user.errors.full_messages_for(:birth).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :email %><br>
-    <%= form.email_field :email %>
+    <%= form.email_field :email , id: "newUserEmail"  %>
     <% @user.errors.full_messages_for(:email).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -26,7 +26,7 @@
 
   <div>
     <%= form.label :cpf %><br>
-    <%= form.text_field :cpf %>
+    <%= form.text_field :cpf , id: "newUserCPF"  %>
     <% @user.errors.full_messages_for(:cpf).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -34,7 +34,7 @@
 
   <div>
     <%= form.label :rg %><br>
-    <%= form.text_field :rg %>
+    <%= form.text_field :rg  , id: "newUserRG" %>
     <% @user.errors.full_messages_for(:rg).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -42,7 +42,7 @@
 
   <div>
     <%= form.label :street %><br>
-    <%= form.text_field :street %>
+    <%= form.text_field :street , id: "newUserStreet"  %>
     <% @user.errors.full_messages_for(:street).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -50,7 +50,7 @@
 
   <div>
     <%= form.label :number %><br>
-    <%= form.text_field :number %>
+    <%= form.text_field :number , id: "newUserNumber"  %>
     <% @user.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -58,7 +58,7 @@
 
   <div>
     <%= form.label :tipo %><br>
-    <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] %>
+    <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
     <% @user.errors.full_messages_for(:tipo).each do |message| %>
       <div><%= message %></div>
     <% end %>

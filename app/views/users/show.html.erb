@@ -22,7 +22,7 @@
       <td><%= @user.street %></td>
       <td><%= @user.number %></td>
       <td><%= @user.tipo %></td>
-      <td><%= link_to "Editar", edit_user_path(@user) %></td>
+      <td><%= link_to "Editar", edit_user_path(@user) , id:'Editar', name:'Editar'%></td>
       <td><%= link_to "Deletar", user_path(@user), method: :delete,
                       data: {confirm: "Você está seguro desta ação?"} %></td>
     </tr>

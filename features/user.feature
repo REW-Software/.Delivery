@@ -3,49 +3,39 @@ Feature: User
   I want to adicionar, listar, atualizar, remover um usuario
   so that eu nao tenha que fazer isso manualmente
 
-Scenario: novo usuario do tipo delivery_man
-  Given Um usuario administrador existente com o name 'admin', o email 'admin@email.com'
-  And Eu estou logado como administrador com o email 'admin@email.com' e com password 'admin123'
-  And Eu estou na pagina administrar entregador
-  When Eu clico em novo entregador
-  And Eu preencho o name com 'entregador', o email 'entregador@email.com', o password com 'senha123', o password_confirmation com 'senha123', a birth_date com '1990-01-01', o cpf com '123.456.789-00', o rg com '1000000', o street 'rua principal', o number '01'
-  And Eu clico em criar novo entregador
-  Then Eu vejo que o novo usuario foi criado
+  Scenario: novo usuario
+    Given Eu estou na pagina de usuarios
+    When Eu clico em novo entregador
+    And Eu preencho o formulario com name 'romulo', birth '12-05-2000', email 'joseromulo@hotmail.com', cpf '118.129.724-90', rg '555555', street 'Manoel Braga', number '162', tipo 'DeliveryMan'
+    And Eu clico em criar novo entregador
+    Then Eu vejo que um novo usuario com name 'romulo', birth '2000-05-12', email 'joseromulo@hotmail.com', cpf '118.129.724-90', rg '555555', street 'Manoel Braga', number '162', tipo 'DeliveryMan' foi criado
 
-Scenario: novo usuario do tipo delivery_man com email invalido
-  Given Um usuario administrador existente com o name 'admin', o email 'admin@email.com'
-  And Eu estou logado como administrador com o email 'admin@email.com' e com password 'admin123'
-  And Eu estou na pagina administrar entregador
-  When Eu clico em novo entregador
-  And Eu preencho o name com 'entregador', o email 'entregadoremail.com', o password com 'senha123', o password_confirmation com 'senha123', a birth_date com '1990-01-01', o cpf com '123.456.789-00', o rg com '1000000', o street 'rua principal', o number '01'
-  And Eu clico em criar novo entregador
-  Then Eu vejo uma mensagem com email invalido
+  Scenario: novo usuario com email invalido
+    Given Eu estou na pagina de usuarios
+    When Eu clico em novo entregador
+    And Eu preencho o formulario com name 'romulo', birth '12-05-2000', email 'joseromulo@hotmailcom', cpf '118.129.724-90', rg '555555', street 'Manoel Braga', number '162', tipo 'DeliveryMan'
+    And Eu clico em criar novo entregador
+    Then Eu vejo uma mensagem de email invalido
 
-Scenario: novo usuario do tipo delivery_man com password invalido
-  Given Um usuario administrador existente com o name 'admin', o email 'admin@email.com'
-  And Eu estou logado como administrador com o email 'admin@email.com' e com password 'admin123'
-  And Eu estou na pagina administrar entregador
-  When Eu clico em novo entregador
-  And Eu preencho o name com 'entregador', o email 'entregador@email.com', o password com '123', o password_confirmation com '123', a birth_date com '1990-01-01', o cpf com '123.456.789-00', o rg com '1000000', o street 'rua principal', o number '01'
-  And Eu clico em criar novo entregador
-  Then Eu vejo uma mensagem com senha invalida
+  Scenario: novo usuario com cpf invalido
+    Given Eu estou na pagina de usuarios
+    When Eu clico em novo entregador
+    And Eu preencho o formulario com name 'romulo', birth '12-05-2000', email 'joseromulo@hotmailcom', cpf '11812972490', rg '555555', street 'Manoel Braga', number '162', tipo 'DeliveryMan'
+    And Eu clico em criar novo entregador
+    Then Eu vejo uma mensagem de cpf invalido
 
-Scenario: atualizar senha do usuario do tipo delivery_man
-  Given Um usuario administrador existente com o name 'admin', o email 'admin@email.com'
-  And Eu estou logado como administrador com o email 'admin@email.com' e com password 'admin123'
-  And Eu estou na pagina administrar entregador
-  When Eu clico em atualizar entregador
-  And Eu seleciono o campo password
-  And Eu preencho o password com '123senha', o password_confirmation com '123senha'
-  And Eu clico em confirmar
-  Then Eu vejo que a senha foi atualizada
-  
-Scenario: atualizar senha do usuario do tipo delivery_man invalida
-  Given Um usuario administrador existente com o name 'admin', o email 'admin@email.com'
-  And Eu estou logado como administrador com o email 'admin@email.com' e com password 'admin123'
-  And Eu estou na pagina administrar entregador
-  When Eu clico em atualizar entregador
-  And Eu seleciono o campo password
-  And Eu preencho o password com '', o password_confirmation com ''
-  And Eu clico em confirmar
-  Then Eu vejo uma mensagem dados invalidos
+  Scenario: atualizar cpf do usuario
+    Given Eu estou na pagina de usuarios
+    And Eu crio um user valido com name 'romulo', birth '12-05-2000', email 'joseromulo@hotmail.com', cpf '118.129.724-90', rg '555555', street 'Manoel Braga', number '162', tipo 'DeliveryMan'
+    When Eu clico em editar usuario
+    And Eu preencho o campo de cpf com '000.000.000-00'
+    And Eu clico em atualizar usuario
+    Then Eu vejo que o novo cpf é '000.000.000-00'
+
+  Scenario: atualizar cpf do usuario com cpf invalido
+    Given Eu estou na pagina de usuarios
+    And Eu crio um user valido com name 'romulo', birth '12-05-2000', email 'joseromulo@hotmail.com', cpf '118.129.724-90', rg '555555', street 'Manoel Braga', number '162', tipo 'DeliveryMan'
+    When Eu clico em editar usuario
+    And Eu preencho o campo de cpf com '00000000000'
+    And Eu clico em atualizar usuario
+    Then Eu vejo uma mensagem de cpf invalido
