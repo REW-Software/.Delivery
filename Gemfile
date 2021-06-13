@@ -22,6 +22,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+group :test do
+  gem 'cucumber-rails', require: false
+  # database_cleaner is not mandatory, but highly recommended
+  gem 'database_cleaner'
+  gem 'rspec'
+end
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
