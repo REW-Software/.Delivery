@@ -2,7 +2,7 @@ And("Um produto com o nome {string") do |name, price|
   Product.create(name: produto, price: 10.00)
 end
 
-And("Eu estou na pagina administrar vendas") do
+Given("Eu estou na pagina de vendas") do
   visit "/sales"
 end
 
@@ -15,12 +15,12 @@ And("Eu preencho o produto {string}, o tipo de pagamento {string}, a quantidade 
 
   select name_product, :from => "Product"
 
-  fill_in "sale[payment_type]",	with: => payment_type
-  fill_in "sale[quantity]",	with: => quantity
-  fill_in "sale[name_client]",	with: => name_client
-  fill_in "sale[phone_client]",	with: => phone_client
-  fill_in "sale[street]",	with: => street
-  fill_in "sale[number]",	with: => number
+  fill_in "sale[payment_type]",	with: payment_type
+  fill_in "sale[quantity]",	with: quantity
+  fill_in "sale[name_client]",	with: name_client
+  fill_in "sale[phone_client]",	with: phone_client
+  fill_in "sale[street]",	with: street
+  fill_in "sale[number]",	with: number
 end
 
 And("Eu clico em criar nova venda") do
