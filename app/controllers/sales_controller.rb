@@ -15,7 +15,7 @@ class SalesController < ApplicationController
 
   def create
     @sale = Sale.new(sale_params)
-    # @product = Product.all
+    @product = Product.all
 
     if @sale.save
       redirect_to @sale
