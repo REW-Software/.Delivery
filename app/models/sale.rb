@@ -3,7 +3,7 @@ class Sale < ApplicationRecord
 
   enum payment_type: [:money, :card]
 
-  validates :quantity_product, presence: true, length: { minimum: 1 }
+  validates :quantity_product, presence: true, numericality: { greater_than: 0 }
   validates :name_client, presence: true, length: { minimum: 4 },  uniqueness: true
   validates :phone_client, presence: true, length: { minimun: 11, maximum: 15 },  uniqueness: true
   validates :street, presence: true, length: { minimun: 5, maximum: 50 }
