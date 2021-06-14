@@ -1,10 +1,15 @@
-<h1>Listagem de usuários</h1>
+<h1>Listagem de vendas</h1>
 <%= link_to "Adicionar venda", new_sale_path %>
 <table>
   <thead>
   <tr>
-    <th>Cliente</th>
+    <th>Nome do cliente</th>
     <th>Telefone</th>
+    <th>Rua</th>
+    <th>Número</th>
+    <th>Produto</th>
+    <th>Quantidade</th>
+    <th>Pagamento</th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +17,12 @@
     <tr>
       <td><%= link_to sale.name_client, sale %></td>
       <td><%= sale.phone_client %></td>
+      <td><%= sale.street %></td>
+      <td><%= sale.number %></td>
+      <td><%= sale.product.name %></td>
+      <td><%= sale.quantity_product %></td>
+      <td><%= sale.payment_type %></td>
+      <td><%= sale.id  %></td>
     </tr>
   <% end %>
   </tbody>
