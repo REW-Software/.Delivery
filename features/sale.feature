@@ -4,32 +4,41 @@ Feature: Sale
   so that eu nao tenha que fazer isso manualmente
 
 Scenario: nova venda
-  Given Eu estou na pagina de vendas
-  When Eu clico em nova venda
-  And Eu preencho o name do produto 'pizza de frango', a quantity do produto '1', a payment_type 'money', name_client 'visitante', phone_client '11999991111', a street 'rua principal', o number '01'
+  Given Possui registrado um produto com name 'pizza de frango' e price '20.00' 
+  And Eu estou na pagina de vendas
+  When Eu clico em adicionar venda
+  And Eu preencho com product 'pizza de frango', quantity '1', payment 'Dinheiro', client 'visitante', phone '11999991111', street 'rua principal' e number '01'
   And Eu clico em criar nova venda
-  Then Eu vejo que uma nova venda foi criada
+  Then Eu vejo que uma venda com product 'pizza de frango', quantity '1', payment 'money', client 'visitante', phone '11999991111', street 'rua principal' e number '01'
 
-Scenario: nova venda com nome do produto invalido
-  Given Eu estou na pagina de vendas
-  When Eu clico em nova venda
-  And Eu preencho o name do produto '', a quantity do produto '1',  name_client 'visitante', phone_client '11999991111', a street 'rua principal', o number '01', a payment_type 'money'
+Scenario: nova venda com quantidade 0 invalida
+  Given Possui registrado um produto com name 'pizza de frango' e price '20.00' 
+  And Eu estou na pagina de vendas
+  When Eu clico em adicionar venda
+  And Eu preencho com product 'pizza de frango', quantity '0', payment 'Dinheiro', client 'visitante', phone '11999991111', street 'rua principal' e number '01'
   And Eu clico em criar nova venda
-  Then Eu vejo uma mensagem dados invalidos
+  Then Eu vejo uma mensagem com quantidade 0 invalida
 
-Scenario: nova venda com quantidade invalida
+Scenario: nova venda com quantidade vazia invalida
+  Given Possui registrado um produto com name 'pizza de frango' e price '20.00' 
   Given Eu estou na pagina de vendas
-  When Eu clico em nova venda
-  And Eu preencho o name do produto 'pizza de frango', a quantity do produto '', name_client 'visitante', phone_client '11999991111', a street 'rua principal', o number '01', a payment_type 'money'
+  When Eu clico em adicionar venda
+  And Eu preencho com product 'pizza de frango', quantity '', payment 'Dinheiro', client 'visitante', phone '11999991111', street 'rua principal' e number '01'
   And Eu clico em criar nova venda
-  Then Eu vejo uma mensagem dados invalidos
+  Then Eu vejo uma mensagem com quantiade nao pode ser vazio
 
-Scenario: remover venda
+Scenario: nova venda com cliente vazio invalido
+  Given Possui registrado um produto com name 'pizza de frango' e price '20.00' 
   Given Eu estou na pagina de vendas
-  When Eu clico em remover venda
-  Then Eu vejo que a venda foi removida
+  When Eu clico em adicionar venda
+  And Eu preencho com product 'pizza de frango', quantity '1', payment 'Dinheiro', client '', phone '11999991111', street 'rua principal' e number '01'
+  And Eu clico em criar nova venda
+  Then Eu vejo uma mensagem com cliente nao pode ser vazio
 
-Scenario: editar uma venda
+  Scenario: nova venda com cliente vazio invalido
+  Given Possui registrado um produto com name 'pizza de frango' e price '20.00' 
   Given Eu estou na pagina de vendas
-  When Eu clico em editar venda
-  Then Eu vejo que a venda foi editada
+  When Eu clico em adicionar venda
+  And Eu preencho com product 'pizza de frango', quantity '1', payment 'Dinheiro', client 'visitante', phone '11999991111', street 'rua principal' e number ''
+  And Eu clico em criar nova venda
+  Then Eu vejo uma mensagem com numero nao pode ser vazio

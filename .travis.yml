@@ -14,9 +14,10 @@ script:
   - bundle exec rake db:setup
   - bundle exec rake db:migrate RAILS_ENV=test
   - bundle exec rails webpacker:compile
-  #- bundle exec rails test test/models/entidade(1).rb
-  #...
-  #- bundle exec rails test test/models/entidade(n).rb
-  #- bundle exec cucumber features/feature(1).feature
-  #...
-  #- bundle exec cucumber features/feature(n).feature
+  - bundle exec rails test test/models/product_test.rb
+  - bundle exec rails test test/models/sale_test.rb
+  - bundle exec rails test test/models/user_test.rb
+  
+  - bundle exec cucumber features/product.feature
+  - bundle exec cucumber features/sale.feature
+  - bundle exec cucumber features/user.feature

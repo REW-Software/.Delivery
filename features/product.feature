@@ -28,7 +28,7 @@ Scenario: atualizar produto
   Given Possui registrado um produto com name 'pizza de frango' e price '20.00'
   And Eu estou na pagina de produtos
   When Eu clico no 'pizza de frango'
-  And Eu clico em editar produto
+  And Eu clico em editar
   And Eu preencho o name com 'frango com catupiry', o price '25.00'
   And Eu clico em atualizar produto
   Then Eu nao vejo um produto com name 'pizza de frango' e price '20.00'
@@ -38,5 +38,5 @@ Scenario: deletar produto
   Given Possui registrado um produto com name 'pizza de frango' e price '20.00'
   And Eu estou na pagina de produtos
   When Eu clico no 'pizza de frango'
-  And Eu clico em deletar produto
+  And Eu clico em deletar
   Then Eu nao vejo um produto com name 'pizza de frango' e price '20.00'
