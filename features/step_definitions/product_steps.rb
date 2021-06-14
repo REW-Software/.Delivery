@@ -21,20 +21,8 @@ When('Eu clico em criar novo produto') do
   click_button 'Create Product'
 end
 
-When('Eu clico no {string}') do |link_name|
-  click_link link_name
-end
-
-When('Eu clico em editar produto') do 
-  click_link 'Editar'
-end
-
 When('Eu clico em atualizar produto') do
   click_button 'Update Product'
-end
-
-When('Eu clico em deletar produto') do
-  click_link 'Deletar'
 end
 
 Then('Eu vejo um produto com name {string} e price {string}') do |name, price|
