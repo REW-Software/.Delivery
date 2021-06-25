@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  post 'sign_in' => 'sessions#create'
+  delete 'sign_out' => 'sessions#destroy'
+  root 'sessions#new'
+
+  get 'homeAdmin' => 'home#admin'
+  get 'homeDeliveryMan' => 'home#deliveryMan'
 
   resources :users
   resources :products

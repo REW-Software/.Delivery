@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authorizeAdmin
+
   def edit
     @product = Product.find(params[:id])
   end
