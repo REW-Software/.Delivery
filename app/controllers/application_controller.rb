@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def authorize
-    if !logged_in?
+    unless logged_in?
       redirect_to root_url
     end
   end
 
   def authorizeAdmin
     if logged_in?
-      if !isAdmin?
+      unless isAdmin?
         redirect_to @current_user
       end
     end
