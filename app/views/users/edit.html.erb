@@ -63,6 +63,21 @@
       <div><%= message %></div>
     <% end %>
   </div>
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password , id: "newUserPassword" %>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation , id: "newUserPasswordConfirmation" %>
+    <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
   <div>
     <%= form.submit %>
