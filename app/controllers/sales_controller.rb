@@ -1,4 +1,5 @@
 class SalesController < ApplicationController
+  before_action :authorizeAdmin, except: [:show, :edit, :update]
   def index
     @sales = Sale.all
   end
