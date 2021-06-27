@@ -1,7 +1,7 @@
 <h1>Editar venda</h1>
 <%= form_with model: @sale do |form| %>
   <div>
-    <%= form.label :name_client %><br>
+    <%= form.label :name_client, "Nome do cliente" %><br>
     <%= form.text_field :name_client %>
     <% @sale.errors.full_messages_for(:name_client).each do |message| %>
       <div><%= message %></div>
@@ -9,7 +9,7 @@
   </div>
 
   <div>
-    <%= form.label :phone_client %><br>
+    <%= form.label :phone_client, "Telefone" %><br>
     <%= form.text_field :phone_client %>
     <% @sale.errors.full_messages_for(:phone_client).each do |message| %>
       <div><%= message %></div>
@@ -17,7 +17,7 @@
   </div>
 
   <div>
-    <%= form.label :street %><br>
+    <%= form.label :street, "Rua" %><br>
     <%= form.text_field :street %>
     <% @sale.errors.full_messages_for(:street).each do |message| %>
       <div><%= message %></div>
@@ -25,7 +25,7 @@
   </div>
 
   <div>
-    <%= form.label :number %><br>
+    <%= form.label :number, "Número da casa" %><br>
     <%= form.text_field :number %>
     <% @sale.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
@@ -33,7 +33,7 @@
   </div>
 
   <div>
-    <%= form.label :payment_type %><br>
+    <%= form.label :payment_type, "Pagamento" %><br>
     <%= form.select :payment_type, [['Dinheiro', :money], ['Cartão', :card]] %>
     <% @sale.errors.full_messages_for(:payment_type).each do |message| %>
       <div><%= message %></div>
@@ -41,7 +41,7 @@
   </div>
 
   <div>
-    <%= form.label :product_id %><br>
+    <%= form.label :product_id, "Produto" %><br>
     <%= form.select :product_id, @product.collect {|product| [product.name, product.id]} %>
     <% @sale.errors.full_messages_for(:product_id).each do |message| %>
       <div><%= message %></div>
@@ -49,7 +49,7 @@
   </div>
 
   <div>
-    <%= form.label :quantity_product %><br>
+    <%= form.label :quantity_product, "Quantidade" %><br>
     <%= form.number_field :quantity_product %>
     <% @sale.errors.full_messages_for(:quantity_product).each do |message| %>
       <div><%= message %></div>
@@ -57,6 +57,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Atualizar Venda"%>
   </div>
 <% end %>

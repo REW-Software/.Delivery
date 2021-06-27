@@ -1,17 +1,17 @@
-<h1>Sessions#new</h1>
+<h1>Ponto Delivery</h1>
 
 <%= form_for :session, url: sign_in_path do |form| %>
   <div class="field">
-    <%= form.label :email %><br />
+    <%= form.label :email, "Email" %><br />
     <%= form.email_field :email, autofocus: true, id: "loginEmail" %>
   </div>
 
   <div class="field">
-    <%= form.label :password %><br />
+    <%= form.label :password, "Senha" %><br />
     <%= form.password_field :password, autocomplete: "off", id: "loginPassword" %>
   </div>
   <div class="actions">
-    <%= form.submit "Logar" %>
+    <%= form.submit "Entrar" %>
   </div>
   <p>Novo usuario? <%= link_to "Se inscreva agora!", new_user_path %></p>
 <% end %>
