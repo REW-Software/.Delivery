@@ -10,10 +10,10 @@ Given('Eu estou na pagina de usuarios') do
   fill_in 'newUserPassword', with: '123456'
   fill_in 'newUserPasswordConfirmation', with: '123456'
   select('Administrador', from: 'user_tipo')
-  click_button 'Create User'
+  click_button 'Criar Usuário'
   fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
   fill_in 'loginPassword', with: '123456'
-  click_button 'Logar'
+  click_button 'Entrar'
   visit '/users'
 end
 
@@ -36,7 +36,7 @@ And('Eu preencho o formulario com name {string}, birth {string}, email {string},
 end
 
 And('Eu clico em criar novo entregador') do
-  click_button 'Create User'
+  click_button 'Criar Usuário'
 end
 
 And ('Eu crio um user valido com name {string}, birth {string}, email {string}, cpf {string}, rg {string}, street {string}, number {string}, tipo {string}, password {string}, password_confirmation {string}') do |name, birth, email, cpf, rg, street, number, tipo, password, password_confirmation|
@@ -51,7 +51,7 @@ And ('Eu crio um user valido com name {string}, birth {string}, email {string}, 
   select(tipo, from: 'user_tipo')
   fill_in 'newUserPassword', with: password
   fill_in 'newUserPasswordConfirmation', with: password_confirmation
-  click_button 'Create User'
+  click_button 'Criar Usuário'
 end
 
 And ('Eu preencho o campo de cpf com {string}') do |cpf|
@@ -65,7 +65,7 @@ When ('Eu clico em editar usuario') do
 end
 
 And ('Eu clico em atualizar usuario') do
-  click_button 'Update User'
+  click_button 'Atualizar Usuário'
 end
 
 Then('Eu vejo que um novo usuario com name {string}, birth {string}, email {string}, cpf {string}, rg {string}, street {string}, number {string}, tipo {string} foi criado') do |name, birth, email, cpf, rg, street, number, tipo|

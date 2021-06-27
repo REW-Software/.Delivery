@@ -16,10 +16,10 @@ Given("Eu estou na pagina de vendas") do
   fill_in 'newUserPassword', with: '123456'
   fill_in 'newUserPasswordConfirmation', with: '123456'
   select('Administrador', from: 'user_tipo')
-  click_button 'Create User'
+  click_button 'Criar Usuário'
   fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
   fill_in 'loginPassword', with: '123456'
-  click_button 'Logar'
+  click_button 'Entrar'
   visit "/sales"
 end
 
@@ -33,8 +33,8 @@ When("Eu clico em adicionar venda") do
 end
 
 When('Eu preencho com product {string}, quantity {string}, payment {string}, client {string}, phone {string}, street {string} e number {string}') do |product, quantity, payment, client, phone, street, number|
-  select product, :from => "Product"
-  select payment,	:from => "Payment type" 
+  select product, :from => "Produto"
+  select payment,	:from => "Pagamento"
 
   fill_in "sale[quantity_product]",	with: quantity
   fill_in "sale[name_client]",	with: client
@@ -44,7 +44,7 @@ When('Eu preencho com product {string}, quantity {string}, payment {string}, cli
 end
 
 And("Eu clico em criar nova venda") do
-  click_button "Create Sale"
+  click_button "Criar Venda"
 end
 
 Then('Eu vejo que uma venda com product {string}, quantity {string}, payment {string}, client {string}, phone {string}, street {string} e number {string}') do |product, quantity, payment, client, phone, street, number|

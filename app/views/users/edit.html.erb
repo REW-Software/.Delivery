@@ -1,7 +1,8 @@
+<%= link_to "Voltar", @user %>
 <h1>Editar usuário</h1>
 <%= form_with model: @user do |form| %>
   <div>
-    <%= form.label :name %><br>
+    <%= form.label :name, "Nome" %><br>
     <%= form.text_field :name , id: "newUserName"  %>
     <% @user.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
@@ -9,7 +10,7 @@
   </div>
 
   <div>
-    <%= form.label :birth %><br>
+    <%= form.label :birth, "Nascimento" %><br>
     <%= form.date_field :birth , id: "newUserBirth"  %>
     <% @user.errors.full_messages_for(:birth).each do |message| %>
       <div><%= message %></div>
@@ -17,7 +18,7 @@
   </div>
 
   <div>
-    <%= form.label :email %><br>
+    <%= form.label :email, "Email" %><br>
     <%= form.email_field :email , id: "newUserEmail"  %>
     <% @user.errors.full_messages_for(:email).each do |message| %>
       <div><%= message %></div>
@@ -25,7 +26,7 @@
   </div>
 
   <div>
-    <%= form.label :cpf %><br>
+    <%= form.label :cpf, "CPF" %><br>
     <%= form.text_field :cpf , id: "newUserCPF"  %>
     <% @user.errors.full_messages_for(:cpf).each do |message| %>
       <div><%= message %></div>
@@ -33,7 +34,7 @@
   </div>
 
   <div>
-    <%= form.label :rg %><br>
+    <%= form.label :rg, "RG" %><br>
     <%= form.text_field :rg  , id: "newUserRG" %>
     <% @user.errors.full_messages_for(:rg).each do |message| %>
       <div><%= message %></div>
@@ -41,7 +42,7 @@
   </div>
 
   <div>
-    <%= form.label :street %><br>
+    <%= form.label :street, "Rua" %><br>
     <%= form.text_field :street , id: "newUserStreet"  %>
     <% @user.errors.full_messages_for(:street).each do |message| %>
       <div><%= message %></div>
@@ -49,7 +50,7 @@
   </div>
 
   <div>
-    <%= form.label :number %><br>
+    <%= form.label :number, "Numero da casa" %><br>
     <%= form.text_field :number , id: "newUserNumber"  %>
     <% @user.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
@@ -57,14 +58,14 @@
   </div>
 
   <div>
-    <%= form.label :tipo %><br>
+    <%= form.label :tipo, "Perfil de usuário" %><br>
     <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
     <% @user.errors.full_messages_for(:tipo).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
-    <%= form.label :password %><br>
+    <%= form.label :password, "Senha" %><br>
     <%= form.password_field :password , id: "newUserPassword" %>
     <% @user.errors.full_messages_for(:password).each do |message| %>
       <div><%= message %></div>
@@ -72,7 +73,7 @@
   </div>
 
   <div>
-    <%= form.label :password_confirmation %><br>
+    <%= form.label :password_confirmation, "Confirmação de senha" %><br>
     <%= form.password_field :password_confirmation , id: "newUserPasswordConfirmation" %>
     <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
       <div><%= message %></div>
@@ -80,6 +81,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Atualizar Usuário" %>
   </div>
 <% end %>

@@ -10,10 +10,10 @@ Given('Eu estou na pagina de produtos') do
   fill_in 'newUserPassword', with: '123456'
   fill_in 'newUserPasswordConfirmation', with: '123456'
   select('Administrador', from: 'user_tipo')
-  click_button 'Create User'
+  click_button 'Criar Usuário'
   fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
   fill_in 'loginPassword', with: '123456'
-  click_button 'Logar'
+  click_button 'Entrar'
   visit '/products'
   expect(page).to have_current_path('/products')
 end
