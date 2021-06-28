@@ -34,6 +34,6 @@ class DeliveryController < ApplicationController
   end
 
   def delivery_params
-    params.require(:delivery).permit(:sale_id, :name_delivery_man, :status)
+    params.require(:delivery).permit(:sale_id, :user_id, :status)
   end
 end
