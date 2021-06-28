@@ -13,5 +13,5 @@
   <div class="actions">
     <%= form.submit "Entrar" %>
   </div>
-  <p>Novo usuario? <%= link_to "Se inscreva agora!", new_user_path %></p>
+  <p>Novo usuario? <%= link_to "Se inscreva agora!", new_user_path(:newClient => 1) %></p>
 <% end %>
