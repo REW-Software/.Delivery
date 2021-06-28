@@ -3,9 +3,12 @@ class Sale < ApplicationRecord
 
   enum payment_type: [:money, :card]
 
-  validates :quantity_product, presence: true, numericality: { greater_than: 0 }
-  validates :name_client, presence: true, length: { minimum: 4 }
-  validates :phone_client, presence: true, length: { minimun: 11, maximum: 15 }
-  validates :street, presence: true, length: { minimun: 5, maximum: 50 }
-  validates :number, presence: true, length: { minimun: 1, maximum: 10 }
+  validates :quantity_product, presence: true, numericality: { greater_than: 0, less_than: 100 }
+  validates :name_client, presence: true, length: { minimum: 4, maximum: 100 }
+
+  VALID_TEL_FORMAT= /\([0-9]{2}\)[0-9]{5}\-[0-9]{4}/
+  validates :phone_client, presence: true, length: {maximum: 14 }, format: {with: VALID_TEL_FORMAT}
+
+  validates :street, presence: true, length: { minimum: 5, maximum: 50 }
+  validates :number, presence: true, length: { minimum: 1, maximum: 10 }
 end
