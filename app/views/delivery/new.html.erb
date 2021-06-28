@@ -1,0 +1,15 @@
+<%= link_to "Voltar", deliveries_path %>
+<h1>Nova venda</h1>
+<%= form_with model: @delivery do |form| %>
+  <div>
+    <%= form.label :name_delivery_man, "Nome do entregador" %><br>
+    <%= form.text_field :name_delivery_man %>
+    <% @sale.errors.full_messages_for(:name_delivery_man).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "Criar Entrega" %>
+  </div>
+<% end %>

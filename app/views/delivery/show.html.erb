@@ -1,0 +1,16 @@
+<%= link_to "Voltar", deliveries_path %>
+<h1>Informações da entrega</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Nome do entregador</th>
+    <th>Status da entrega</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @delivery.name_delivery_man %></td>
+    <td><%= @delivery.status %></td>
+  </tr>
+  </tbody>
+</table>
