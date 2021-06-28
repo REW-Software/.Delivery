@@ -3,5 +3,5 @@ class Delivery < ApplicationRecord
   has_one :user
 
   validates :name_delivery_man, presence: true
-  validates :status, presence: true
+  enum status: [:progress, :concluded]
 end
