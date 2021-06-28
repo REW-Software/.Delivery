@@ -7,7 +7,7 @@ class DeliveryController < ApplicationController
   end
 
   def create
-    @sale = Sale.find(params[:id])
+    @delivery = Delivery.new(delivery_params)
     filter_delivery_man if params[:tipo]
 
     if @delivery.save
@@ -31,5 +31,9 @@ class DeliveryController < ApplicationController
     @user = @user.select do |u| 
       u.tipo.deliveryMan == params[:tipo]
     end
+  end
+
+  def delivery_params
+    params.require(:delivery).permit(:sale_id, :user_id, :status)
   end
 end
