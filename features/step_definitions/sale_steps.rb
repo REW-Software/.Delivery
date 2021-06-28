@@ -1,31 +1,20 @@
 require 'webdrivers'
 
-And("Um produto com o nome {string") do |name, price|
-  Product.create(name: produto, price: 10.00)
-end
-
 Given("Eu estou na pagina de vendas") do
-  visit '/users/new'
-  fill_in 'newUserName', with: 'romulo'
-  fill_in 'newUserBirth', with: '05-12-2000'
-  fill_in 'newUserEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'newUserCPF', with: '118.129.724-90'
-  fill_in 'newUserRG', with: '125345'
-  fill_in 'newUserStreet', with: 'manoel Braga'
-  fill_in 'newUserNumber', with: '162'
-  fill_in 'newUserPassword', with: '123456'
-  fill_in 'newUserPasswordConfirmation', with: '123456'
-  select('Administrador', from: 'user_tipo')
-  click_button 'Criar Usuário'
-  fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'loginPassword', with: '123456'
-  click_button 'Entrar'
   visit "/sales"
 end
 
 Given("Possui registrado uma venda com product {string}, quantity {string}, payment {string}, client {string}, phone {string}, street {string} e number {string}") do |product, quantity, payment, client, phone, street, number|
-  sale = Sale.new product_id: Product.find_by(name: product).id, quantity_product: quantity, payment_type: payment, name_client: client, phone_client: phone, street: street, number: number
-  sale.save()
+  visit "/sales"
+  click_link "Adicionar venda"
+
+  fill_in "sale[quantity_product]",	with: quantity
+  fill_in "sale[name_client]",	with: client
+  fill_in "sale[phone_client]",	with: phone
+  fill_in "sale[street]",	with: street
+  fill_in "sale[number]",	with: number
+
+  click_link "Adicionar venda"
 end
 
 When("Eu clico em adicionar venda") do

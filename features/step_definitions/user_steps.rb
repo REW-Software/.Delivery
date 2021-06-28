@@ -1,27 +1,8 @@
-Given('Eu estou na pagina de usuarios') do
+Given('Eu estou na pagina de novo usuario') do
   visit '/users/new'
-  fill_in 'newUserName', with: 'romulo'
-  fill_in 'newUserBirth', with: '05-12-2000'
-  fill_in 'newUserEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'newUserCPF', with: '118.129.724-90'
-  fill_in 'newUserRG', with: '125345'
-  fill_in 'newUserStreet', with: 'manoel Braga'
-  fill_in 'newUserNumber', with: '162'
-  fill_in 'newUserPassword', with: '123456'
-  fill_in 'newUserPasswordConfirmation', with: '123456'
-  select('Administrador', from: 'user_tipo')
-  click_button 'Criar Usuário'
-  fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'loginPassword', with: '123456'
-  click_button 'Entrar'
-  visit '/users'
 end
 
-When('Eu clico em novo entregador') do
-  click_link 'Adicionar usuário'
-end
-
-And('Eu preencho o formulario com name {string}, birth {string}, email {string}, cpf {string}, rg {string}, street {string}, number {string}, tipo {string}, password {string}, password_confirmation {string}') do |name, birth, email, cpf, rg, street, number, tipo, password, password_confirmation|
+And('Eu preencho o formulario com nome {string}, nascimento {string}, email {string}, cpf {string}, rg {string}, rua {string}, numero da casa {string}, perfil de usuario {string}, senha {string}, confirmacao de senha {string}') do |name, birth, email, cpf, rg, street, number, tipo, password, password_confirmation|
 
   fill_in 'newUserName', with: name
   fill_in 'newUserBirth', with: birth
@@ -35,11 +16,11 @@ And('Eu preencho o formulario com name {string}, birth {string}, email {string},
   fill_in 'newUserPasswordConfirmation', with: password_confirmation
 end
 
-And('Eu clico em criar novo entregador') do
+And('Eu clico em criar usuario') do
   click_button 'Criar Usuário'
 end
 
-And ('Eu crio um user valido com name {string}, birth {string}, email {string}, cpf {string}, rg {string}, street {string}, number {string}, tipo {string}, password {string}, password_confirmation {string}') do |name, birth, email, cpf, rg, street, number, tipo, password, password_confirmation|
+And ('Eu crio um usuario valido com nome {string}, nascimento {string}, email {string}, cpf {string}, rg {string}, rua {string}, numero da casa {string}, perfil de usuario {string}, senha {string}, confirmacao de senha {string}') do |name, birth, email, cpf, rg, street, number, tipo, password, password_confirmation|
   click_link 'Adicionar usuário'
   fill_in 'newUserName', with: name
   fill_in 'newUserBirth', with: birth
@@ -68,7 +49,7 @@ And ('Eu clico em atualizar usuario') do
   click_button 'Atualizar Usuário'
 end
 
-Then('Eu vejo que um novo usuario com name {string}, birth {string}, email {string}, cpf {string}, rg {string}, street {string}, number {string}, tipo {string} foi criado') do |name, birth, email, cpf, rg, street, number, tipo|
+Then('Eu vejo que um novo usuario com nome {string}, nascimento {string}, email {string}, cpf {string}, rg {string}, rua {string}, numero da casa {string}, perfil de usuario {string} foi criado') do |name, birth, email, cpf, rg, street, number, tipo|
   expect(page).to have_content(name)
   expect(page).to have_content(birth)
   expect(page).to have_content(email)

@@ -1,0 +1,20 @@
+<%= link_to "Voltar", homeAdmin_path %>
+<h1>Listagem de entregas</h1>
+<%= link_to "Adicionar entrega", new_delivery_path %>
+<table>
+  <thead>
+  <tr>
+      <th>Nome do entregador</th>
+      <th>Status da entrega</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @deliveries.each do |delivery| %>
+    <tr>
+      <td><%= link_to delivery.name_delivery_man, delivery %></td>
+      <td><%= delivery.status  %></td>
+      <td><%= delivery.id  %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
