@@ -1,4 +1,4 @@
-class Delivery < ApplicationRecord
+class DeliverySale < ApplicationRecord
   has_one :sale
   has_one :user
 
