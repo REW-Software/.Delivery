@@ -12,6 +12,9 @@
   </div>
   <div class="actions">
     <%= form.submit "Entrar" %>
+    <% if @error %>
+      <div><p>Usuário não encontrado!</p></div>
+    <% end %>
   </div>
-  <p>Novo usuario? <%= link_to "Se inscreva agora!", new_user_path %></p>
+  <p>Novo usuario? <%= link_to "Se inscreva agora!", new_user_path(:newClient => 1) %></p>
 <% end %>

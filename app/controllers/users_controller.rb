@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authorize, except: [:new, :create]
-  before_action :correct_user?, only: [:edit, :update, :destroy]
-
+  before_action :correct_user?, only: [:show, :edit, :update, :destroy]
+  before_action :authorizeAdmin, except: [:show, :edit, :update, :destroy]
   def index
     @users = User.all
   end
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @newDeliveryMan = params[:newClient]
   end
 
   def create

@@ -8,9 +8,9 @@ Scenario: nova venda
   And Possui registrado um produto com name 'pizza de frango' e price '20.00' 
   And Eu estou na pagina de vendas
   When Eu clico em adicionar venda
-  And Eu preencho com product 'pizza de frango', quantity '1', payment 'Dinheiro', client 'visitante', phone '11999991111', street 'rua principal' e number '01'
+  And Eu preencho com product 'pizza de frango', quantity '1', payment 'Dinheiro', client 'visitante', phone '(11)99999-1111', street 'rua principal' e number '01'
   And Eu clico em criar nova venda
-  Then Eu vejo que uma venda com product 'pizza de frango', quantity '1', payment 'money', client 'visitante', phone '11999991111', street 'rua principal' e number '01'
+  Then Eu vejo que uma venda com product 'pizza de frango', quantity '1', payment 'money', client 'visitante', phone '(11)99999-1111', street 'rua principal' e number '01'
 
 Scenario: nova venda com quantidade 0 invalida
   Given Eu estou logado como um administrador
