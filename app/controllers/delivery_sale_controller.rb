@@ -1,28 +1,28 @@
-class DeliveryController < ApplicationController
+class DeliverySaleController < ApplicationController
   before_action :authorizeAdmin
 
   def new
-    @delivery = Delivery.new
+    @delivery_sale = Delivery_Sale.new
     filter_delivery_man if params[:tipo]
   end
 
   def create
-    @delivery = Delivery.new(delivery_params)
+    @delivery_sale = DeliverySale.new(delivery_params)
     filter_delivery_man if params[:tipo]
 
-    if @delivery.save
-      redirect_to @delivery
+    if @delivery_sale.save
+      redirect_to @delivery_sale
     else
       render :new
     end
   end
 
   def index
-    @deliveries = Delivery.all
+    @deliveries_sales = DeliverySale.all
   end
 
   def show
-    @delivery = Delivery.find(params[:id])
+    @delivery_sale = DeliverySale.find(params[:id])
   end
 
   private

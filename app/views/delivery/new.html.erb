@@ -1,10 +1,10 @@
 <%= link_to "Voltar", deliveries_path %>
 <h1>Nova entrega</h1>
-<%= form_with model: @delivery do |form| %>
+<%= form_with model: @delivery_sale do |form| %>
   <div>
     <%= form.label :sale_id, "Venda" %><br>
     <%= form.select :sale_id, @sale.collect {|product| [product.id]} %>
-    <% @delivery.errors.full_messages_for(:sale_id).each do |message| %>
+    <% @delivery_sale.errors.full_messages_for(:sale_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -12,7 +12,7 @@
   <div>
     <%= form.label :user_id, "Entregador" %><br>
     <%= form.select :user_id, @user.collect {|user| [user.id]} %>
-    <% @delivery.errors.full_messages_for(:user_id).each do |message| %>
+    <% @delivery_sale.errors.full_messages_for(:user_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -20,7 +20,7 @@
   <div>
     <%= form.label :status, "Status da entrega" %><br>
       <%= form.select :status, ['Em andamento', 'Concluido']  %>
-    <% @delivery.errors.full_messages_for(:status).each do |message| %>
+    <% @delivery_sale.errors.full_messages_for(:status).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
