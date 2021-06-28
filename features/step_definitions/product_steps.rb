@@ -19,8 +19,11 @@ Given('Eu estou na pagina de produtos') do
 end
 
 Given('Possui registrado um produto com name {string} e price {string}') do |name, price|
-  product = Product.new name: name, price: price
-  product.save()
+  visit '/products'
+  click_link 'Adicionar produto'
+  fill_in 'product_name', with: name
+  fill_in 'product_price', with: price
+  click_button 'Create Product'
 end
 
 When('Eu clico em novo produto') do

@@ -24,8 +24,16 @@ Given("Eu estou na pagina de vendas") do
 end
 
 Given("Possui registrado uma venda com product {string}, quantity {string}, payment {string}, client {string}, phone {string}, street {string} e number {string}") do |product, quantity, payment, client, phone, street, number|
-  sale = Sale.new product_id: Product.find_by(name: product).id, quantity_product: quantity, payment_type: payment, name_client: client, phone_client: phone, street: street, number: number
-  sale.save()
+  visit "/sales"
+  click_link "Adicionar venda"
+
+  fill_in "sale[quantity_product]",	with: quantity
+  fill_in "sale[name_client]",	with: client
+  fill_in "sale[phone_client]",	with: phone
+  fill_in "sale[street]",	with: street
+  fill_in "sale[number]",	with: number
+
+  click_link "Adicionar venda"
 end
 
 When("Eu clico em adicionar venda") do
