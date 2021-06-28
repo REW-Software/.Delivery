@@ -6,7 +6,7 @@ class Sale < ApplicationRecord
   validates :quantity_product, presence: true, numericality: { greater_than: 0, less_than: 100 }
   validates :name_client, presence: true, length: { minimum: 4, maximum: 100 }
 
-  VALID_TEL_FORMAT= /\([0-9]{2}\)[0-9]{5}\-[0-9]{4}/
+  VALID_TEL_FORMAT = /\A\([0-9]{2}\)[0-9]{5}\-[0-9]{4}\z/.freeze
   validates :phone_client, presence: true, length: {maximum: 14 }, format: {with: VALID_TEL_FORMAT}
 
   validates :street, presence: true, length: { minimum: 5, maximum: 50 }
