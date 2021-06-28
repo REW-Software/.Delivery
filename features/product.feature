@@ -4,28 +4,32 @@ Feature: Product
   so that eu nao tenha que fazer isso manualmente
 
 Scenario: novo produto
-  Given Eu estou na pagina de produtos
+  Given Eu estou logado como um administrador
+  And Eu estou na pagina de produtos
   When Eu clico em novo produto
   And Eu preencho o name com 'pizza de frango', o price '20.00'
   And Eu clico em criar novo produto
   Then Eu vejo um produto com name 'pizza de frango' e price '20.00'
 
 Scenario: novo produto com price nao numero
-  Given Eu estou na pagina de produtos
+  Given Eu estou logado como um administrador
+  And Eu estou na pagina de produtos
   When Eu clico em novo produto
   And Eu preencho o name com 'pizza de frango', o price 'abc'
   And Eu clico em criar novo produto
   Then Eu vejo uma mensagem com price nao e um numero
 
 Scenario: novo produto com nome invalido
-  Given Eu estou na pagina de produtos
+  Given Eu estou logado como um administrador
+  And Eu estou na pagina de produtos
   When Eu clico em novo produto
   And Eu preencho o name com '', o price '20.00'
   And Eu clico em criar novo produto
   Then Eu vejo uma mensagem com nome nao pode ser vazio
 
 Scenario: atualizar produto
-  Given Possui registrado um produto com name 'pizza de frango' e price '20.00'
+  Given Eu estou logado como um administrador
+  And Possui registrado um produto com name 'pizza de frango' e price '20.00'
   And Eu estou na pagina de produtos
   When Eu clico no 'pizza de frango'
   And Eu clico em editar
@@ -35,7 +39,8 @@ Scenario: atualizar produto
   And Eu vejo um produto com name 'frango com catupiry' e price '25.00'
 
 Scenario: deletar produto
-  Given Possui registrado um produto com name 'pizza de frango' e price '20.00'
+  Given Eu estou logado como um administrador
+  And Possui registrado um produto com name 'pizza de frango' e price '20.00'
   And Eu estou na pagina de produtos
   When Eu clico no 'pizza de frango'
   And Eu clico em deletar
