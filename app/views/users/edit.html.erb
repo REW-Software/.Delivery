@@ -59,7 +59,11 @@
 
   <div>
     <%= form.label :tipo, "Perfil de usuário" %><br>
-    <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+    <% if @tipo == 'DeliveryMan' %>
+      <%= form.select :tipo, ['DeliveryMan'] , id: "newUserTipo"  %>
+    <% else %>
+      <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+    <% end %>
     <% @user.errors.full_messages_for(:tipo).each do |message| %>
       <div><%= message %></div>
     <% end %>
