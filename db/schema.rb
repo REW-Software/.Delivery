@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2021_06_28_164402) do
   create_table "deliveries", force: :cascade do |t|
     t.integer "sale_id", null: false
     t.integer "user_id", null: false
+    t.string "name_delivery_man", null: false
+    t.integer "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sale_id"], name: "index_deliveries_on_sale_id"

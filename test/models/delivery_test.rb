@@ -9,7 +9,7 @@ class DeliveryTest < ActiveSupport::TestCase
     user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555', street:'Manoel Braga', number:'162', tipo:'DeliveryMan', password:'123456', password_confirmation:'123456')
     user.save
 
-    delivery = Delivery.new(sale_id: sale.id, name_delivery_man: "Romulo", status: "em andamento")
+    delivery = Delivery.new(sale_id: sale.id, name_delivery_man: "Romulo", status: "progress")
     assert delivery.save
   end
 
@@ -33,7 +33,7 @@ class DeliveryTest < ActiveSupport::TestCase
     user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555', street:'Manoel Braga', number:'162', tipo:'DeliveryMan', password:'123456', password_confirmation:'123456')
     user.save
 
-    delivery = Delivery.new(sale_id: "", name_delivery_man: "Romulo", status: "concluido")
+    delivery = Delivery.new(sale_id: "", name_delivery_man: "Romulo", status: "concluded")
     assert_not delivery.save
   end
 end
