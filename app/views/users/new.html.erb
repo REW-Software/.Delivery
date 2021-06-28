@@ -3,7 +3,7 @@
 <%= form_with model: @user do |form| %>
   <div>
     <%= form.label :name, "Nome" %><br>
-    <%= form.text_field :name , id: "newUserName"  %>
+    <%= form.text_field :name , id: "newUserName", placeholder: "Seu nome"  %>
     <% @user.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -19,7 +19,7 @@
 
   <div>
     <%= form.label :email, "Email" %><br>
-    <%= form.email_field :email , id: "newUserEmail"  %>
+    <%= form.email_field :email , id: "newUserEmail", placeholder: "seuEmail@mail.com"  %>
     <% @user.errors.full_messages_for(:email).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -27,7 +27,7 @@
 
   <div>
     <%= form.label :cpf, "CPF" %><br>
-    <%= form.text_field :cpf , id: "newUserCPF"  %>
+    <%= form.text_field :cpf , id: "newUserCPF", placeholder: "xxx.xxx.xxx-xx"  %>
     <% @user.errors.full_messages_for(:cpf).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -43,7 +43,7 @@
 
   <div>
     <%= form.label :street, "Rua" %><br>
-    <%= form.text_field :street , id: "newUserStreet"  %>
+    <%= form.text_field :street , id: "newUserStreet", placeholder: "Ex. Manoel Braga"  %>
     <% @user.errors.full_messages_for(:street).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -51,7 +51,7 @@
 
   <div>
     <%= form.label :number, "Numero da casa" %><br>
-    <%= form.text_field :number , id: "newUserNumber"  %>
+    <%= form.text_field :number , id: "newUserNumber", placeholder: "Ex. 999"  %>
     <% @user.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -59,14 +59,18 @@
 
   <div>
     <%= form.label :tipo, "Perfil de usuário" %><br>
-    <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+    <% if @newDeliveryMan %>
+      <%= form.select :tipo, ['DeliveryMan'] , id: "newUserTipo"  %>
+    <% else %>
+      <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+    <% end %>
     <% @user.errors.full_messages_for(:tipo).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :password, "Senha" %><br>
-    <%= form.password_field :password , id: "newUserPassword" %>
+    <%= form.password_field :password , id: "newUserPassword", placeholder: "Min. 6" %>
     <% @user.errors.full_messages_for(:password).each do |message| %>
       <div><%= message %></div>
     <% end %>
