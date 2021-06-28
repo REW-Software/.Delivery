@@ -11,7 +11,7 @@
 
   <div>
     <%= form.label :phone_client, "Telefone" %><br>
-    <%= form.text_field :phone_client %>
+    <%= form.text_field :phone_client, placeholder: "(xx)xxxxx-xxxx" %>
     <% @sale.errors.full_messages_for(:phone_client).each do |message| %>
       <div><%= message %></div>
     <% end %>
