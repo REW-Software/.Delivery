@@ -4,14 +4,15 @@
 <table>
   <thead>
   <tr>
-      <th>Status da entrega</th>
+    <th>ID</th>
+    <th>Status</th>
   </tr>
   </thead>
   <tbody>
-  <% @posts.each do |delivery| %>
+  <% @posts.each do |post| %>
     <tr>
-      <td><%= delivery.status  %></td>
-      <td><%= delivery.id  %></td>
+      <td><%= link_to post.id, post %></td>
+      <td><%= post.status  %></td>
     </tr>
   <% end %>
   </tbody>
