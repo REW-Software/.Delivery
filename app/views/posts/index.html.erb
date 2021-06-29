@@ -12,7 +12,13 @@
   <% @posts.each do |post| %>
     <tr>
       <td><%= link_to post.id, post %></td>
-      <td><%= post.status  %></td>
+
+      <% case post.status %>
+      <% when 'progress' %>
+        <td>Em progresso</td>
+      <% when 'concluded' %>
+        <td>Concluído</td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
