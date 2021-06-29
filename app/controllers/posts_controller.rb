@@ -3,12 +3,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    filter_delivery_man if params[:tipo]
+    @sales = Sale.all
+    @users = User.where("tipo = 'DeliveryMan'")
   end
 
   def create
-    @post = Post.new(delivery_params)
-    filter_delivery_man if params[:tipo]
+    @post = Post.new(post_params)
 
     if @post.save
       redirect_to @post
@@ -27,13 +27,7 @@ class PostsController < ApplicationController
 
   private
 
-  def filter_delivery_man
-    @user = @user.select do |u| 
-      u.tipo.deliveryMan == params[:tipo]
-    end
-  end
-
-  def delivery_params
-    params.require(:delivery).permit(:sale_id, :user_id, :status)
+  def post_params
+    params.require(:post).permit(:sale_id, :user_id, :status)
   end
 end
