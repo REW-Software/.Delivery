@@ -1,0 +1,15 @@
+<%= link_to "Voltar", @post %>
+<h1>Editar entrega</h1>
+<%= form_with model: @post do |form| %>
+  <div>
+    <%= form.label :status, "Status" %><br>
+    <%= form.select :status, [['Em andamento', :progress], ['Concluído', :concluded]] %>
+    <% @post.errors.full_messages_for(:status).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "Atualizar entrega"%>
+  </div>
+<% end %>
