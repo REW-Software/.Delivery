@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   before_action :authorizeAdmin
 
   def edit
-    @product = Product.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @sale = Sale.find(params[:sale_id])
+    @product = @sale.products.find(params[:id])
   end
   
   def index
@@ -10,43 +12,53 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @post = Post.find(params[:post_id])
+    @sale = Sale.find(params[:sale_id])
+    @product = @sale.products.build
   end
 
   def create
-  
-    @product = Product.new(product_params)
+    @post = Post.find(params[:post_id])
+    @sale = Sale.find(params[:sale_id])
+    @product = @sale.products.create(product_params)
 
     if @product.save
-      redirect_to @product
+      redirect_to sale_path(@sale, :post_id => @post.id)
     else
       render :new
     end
   end
 
   def show
-    @product = Product.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @sale = Sale.find(params[:sale_id])
+    @product = @sale.products.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @sale = Sale.find(params[:sale_id])
+    @product = @sale.products.find(params[:id])
 
     if @product.update(product_params)
-      redirect_to @product
+      redirect_to sale_path(@sale, :post_id => @post.id)
     else
       render :edit
     end
   end
 
   def destroy
-    @product = Product.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @sale = Sale.find(params[:sale_id])
+    @product = @sale.products.find(params[:id])
+
     @product.destroy
 
-    redirect_to products_path
+    redirect_to  sale_path(@sale, :post_id => @post.id)
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :price)
+    params.require(:product).permit(:name, :price, :quantity_product)
   end
 end
