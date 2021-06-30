@@ -1,4 +1,4 @@
-<%= link_to "Voltar", sales_path %>
+<%= link_to "Voltar", @post %>
 <h1>Informações venda</h1>
 <table>
   <thead>
@@ -7,8 +7,6 @@
     <th>Telefone</th>
     <th>Rua</th>
     <th>Número</th>
-    <th>Produto</th>
-    <th>Quantidade</th>
     <th>Pagamento</th>
   </tr>
   </thead>
@@ -18,12 +16,25 @@
     <td><%= @sale.phone_client %></td>
     <td><%= @sale.street %></td>
     <td><%= @sale.number %></td>
-    <td><%= @product.name %></td>
-    <td><%= @sale.quantity_product %></td>
     <td><%= @sale.payment_type %></td>
-    <td><%= link_to "Editar", edit_sale_path(@sale) %></td>
-    <td><%= link_to "Deletar", sale_path(@sale), method: :delete,
-                    data: {confirm: "Você está seguro desta ação?"} %></td>
+    <% if logged_in? %>
+      <% if isAdmin? %>
+        <td><%= link_to "Editar", edit_sale_path(@sale, :post_id => @post.id) %></td>
+        <td><%= link_to "Deletar", sale_path(@sale, :post_id => @post.id), method: :delete,
+                        data: {confirm: "Você está seguro desta ação?"} %></td>
+        <td><%= link_to "Adicionar produto na venda", new_product_path(:sale_id => @sale.id, :post_id => @post.id) %></td>
+      <% end %>
+    <% end %>
   </tr>
   </tbody>
 </table>
+
+<h3>Produtos</h3>
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id) %>
+        <%= product.quantity_product %> unidades
+      </li>
+    <% end %>
+  </ul>

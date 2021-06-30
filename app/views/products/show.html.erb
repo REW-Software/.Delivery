@@ -1,18 +1,20 @@
-<%= link_to "Voltar", products_path %>
+<%= link_to "Voltar", sale_path(@sale, :post_id => @post.id) %>
 <h1>Produto</h1>
 <table>
   <thead>
   <tr>
     <th>Nome</th>
     <th>Preço</th>
+    <th>Quantidade</th>
   </tr>
   </thead>
   <tbody>
     <tr>
       <td><%= @product.name %></td>
       <td><%= number_to_currency @product.price, unit: "R$" %></td>
-      <td><%= link_to "Editar", edit_product_path(@product) %></td>
-      <td><%= link_to "Deletar", product_path(@product), method: :delete,
+      <td><%= @product.quantity_product %></td>
+      <td><%= link_to "Editar", edit_product_path(@product, :sale_id => @sale.id, :post_id => @post.id) %></td>
+      <td><%= link_to "Deletar", product_path(@product, :sale_id => @sale.id, :post_id => @post.id), method: :delete,
                       data: {confirm: "Você está seguro desta ação?"} %></td>
     </tr>
   </tbody>
