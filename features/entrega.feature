@@ -1,7 +1,7 @@
 Feature: Post
   As a administrador do sistema .Delivery
-  I want to adicionar, listar uma entrega
-  so that eu nao tenha que fazer isso manualmente
+  I want to atribuir entrega ao entregador, mudar status da entrega, listar entregas
+  so that eu possa gerenciar as entregas
 
 Scenario: nova entrega
   Given Eu estou logado como um administrador
