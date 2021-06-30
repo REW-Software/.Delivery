@@ -33,7 +33,7 @@ class SalesController < ApplicationController
 
   def update
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:id])
+    @sale = @post.sales.find(params[:id])
 
     if @sale.update(sale_params)
       redirect_to sale_path(@sale, :post_id => @post.id)

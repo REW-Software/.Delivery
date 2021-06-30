@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
 
   def update
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:sale_id])
+    @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.find(params[:id])
 
     if @product.update(product_params)
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:sale_id])
+    @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.find(params[:id])
 
     @product.destroy
