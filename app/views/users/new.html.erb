@@ -42,29 +42,13 @@
   </div>
 
   <div>
-    <%= form.label :street, "Rua" %><br>
-    <%= form.text_field :street , id: "newUserStreet", placeholder: "Ex. Manoel Braga"  %>
-    <% @user.errors.full_messages_for(:street).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :number, "Numero da casa" %><br>
-    <%= form.text_field :number , id: "newUserNumber", placeholder: "Ex. 999"  %>
-    <% @user.errors.full_messages_for(:number).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :tipo, "Perfil de usuário" %><br>
+    <%= form.label :type_user, "Perfil de usuário" %><br>
     <% if @newDeliveryMan %>
-      <%= form.select :tipo, ['DeliveryMan'] , id: "newUserTipo"  %>
+      <%= form.select :type_user, ['DeliveryMan'] , id: "newUserTipo"  %>
     <% else %>
-      <%= form.select :tipo, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+      <%= form.select :type_user, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
     <% end %>
-    <% @user.errors.full_messages_for(:tipo).each do |message| %>
+    <% @user.errors.full_messages_for(:type_user).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

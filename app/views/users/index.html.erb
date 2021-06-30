@@ -10,10 +10,12 @@
   </thead>
   <tbody>
   <% @users.each do |user| %>
+  <% if user.type_user != 'Administrador' %>
     <tr>
       <td><%= link_to user.name, user %></td>
-      <td><%= user.tipo %></td>
+      <td><%= user.type_user %></td>
     </tr>
   <% end %>
+  <%end %>
   </tbody>
 </table>
