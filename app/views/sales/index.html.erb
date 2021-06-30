@@ -5,9 +5,6 @@
   <thead>
   <tr>
     <th>Nome do cliente</th>
-    <th>Telefone</th>
-    <th>Rua</th>
-    <th>Número</th>
     <th>Pagamento</th>
   </tr>
   </thead>
@@ -15,9 +12,6 @@
   <% @sales.each do |sale| %>
     <tr>
       <td><%= link_to sale.name_client, sale %></td>
-      <td><%= sale.phone_client %></td>
-      <td><%= sale.street %></td>
-      <td><%= sale.number %></td>
       <td><%= sale.payment_type %></td>
       <td><%= sale.id  %></td>
     </tr>

@@ -3,32 +3,8 @@
 <%= form_with model: @sale do |form| %>
   <div>
     <%= form.label :name_client, "Nome do cliente" %><br>
-    <%= form.text_field :name_client %>
+    <%= form.select :name_client, @clients.collect {|client| [client.name, client.email]} %>
     <% @sale.errors.full_messages_for(:name_client).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :phone_client, "Telefone" %><br>
-    <%= form.text_field :phone_client %>
-    <% @sale.errors.full_messages_for(:phone_client).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :street, "Rua" %><br>
-    <%= form.text_field :street %>
-    <% @sale.errors.full_messages_for(:street).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :number, "Número da casa" %><br>
-    <%= form.text_field :number %>
-    <% @sale.errors.full_messages_for(:number).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
