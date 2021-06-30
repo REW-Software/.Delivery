@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @deliveryMan = @post.user
+    @deliveryMan = User.find(@post.user_id)
     @sales = @post.sales
   end
 

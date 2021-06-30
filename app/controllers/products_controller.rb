@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:sale_id])
+    @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.find(params[:id])
   end
   
@@ -13,13 +13,13 @@ class ProductsController < ApplicationController
 
   def new
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:sale_id])
+    @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.build
   end
 
   def create
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:sale_id])
+    @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.create(product_params)
 
     if @product.save
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
 
   def show
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:sale_id])
+    @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.find(params[:id])
   end
 

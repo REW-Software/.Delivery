@@ -6,7 +6,7 @@ class SalesController < ApplicationController
 
   def show
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:id])
+    @sale = @post.sales.find(params[:sale_id])
     @products = @sale.products
   end
 
@@ -28,7 +28,7 @@ class SalesController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:id])
+    @sale = @post.sales.find(params[:sale_id])
   end
 
   def update
@@ -44,7 +44,7 @@ class SalesController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    @sale = Sale.find(params[:id])
+    @sale = @post.sales.find(params[:sale_id])
     @sale.destroy
 
     redirect_to post_path(@post)
