@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_one :address, dependent: :destroy
 
   has_secure_password
 
@@ -20,9 +21,5 @@ class User < ApplicationRecord
   VALID_RG_FORMAT = /\A\d+\Z/.freeze
   validates :rg, presence: true, length: { maximum: 14 }, format: { with: VALID_RG_FORMAT }
 
-  validates :street, presence: true, length: { minimum: 4, maximum: 100 }
-
-  validates :number, presence: true, length: { minimum: 1, maximum: 10 }
-
-  validates :tipo, presence: true
+  validates :type_user, presence: true
 end

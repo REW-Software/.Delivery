@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'openDeliveries' => 'home#openDeliveries'
   get 'closedDeliveries' => 'home#closedDeliveries'
 
-  resources :users
+  resources :users do
+    resources :addresses
+  end
   resources :products
   resources :sales
   resources :posts

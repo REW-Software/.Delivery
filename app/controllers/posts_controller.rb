@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
+  before_action :authorize
   before_action :authorizeAdmin, except: [:show, :edit, :update]
 
   def new
     @post = Post.new
-    @users = User.where("tipo = 'DeliveryMan'")
+    @users = User.where("type_user = 'DeliveryMan'")
   end
 
   def create
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @users = User.where("tipo = 'DeliveryMan'")
+    @users = User.where("type_user = 'DeliveryMan'")
   end
 
   def update

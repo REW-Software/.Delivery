@@ -8,8 +8,6 @@
     <th>Email</th>
     <th>CPF</th>
     <th>RG</th>
-    <th>Rua</th>
-    <th>Número</th>
     <th>Tipo</th>
   </tr>
   </thead>
@@ -20,9 +18,8 @@
       <td><%= @user.email %></td>
       <td><%= @user.cpf %></td>
       <td><%= @user.rg %></td>
-      <td><%= @user.street %></td>
-      <td><%= @user.number %></td>
-      <td><%= @user.tipo %></td>
+      <td><%= @user.type_user %></td>
+      <td><%= link_to "Endereço", user_address_path(:user_id => @user.id)  %></td>
       <td><%= link_to "Editar", edit_user_path(@user) , id:'Editar', name:'Editar'%></td>
       <td><%= link_to "Deletar", user_path(@user), method: :delete,
                       data: {confirm: "Você está seguro desta ação?"} %></td>
