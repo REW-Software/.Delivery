@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :posts
+
   has_secure_password
 
   validates :name, presence: true, length: { minimum: 4, maximum: 100 }
