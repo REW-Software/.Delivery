@@ -1,0 +1,9 @@
+<%= link_to "Voltar", homeDeliveryMan_path %>
+<h2>Entregas em progresso</h2>
+<ul>
+  <% @openDeliveries.each do |delivery| %>
+    <li>
+      <%= link_to "Entrega para concluir", delivery %>
+    </li>
+  <% end %>
+</ul>
