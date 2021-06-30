@@ -1,0 +1,14 @@
+<%= link_to "Voltar", :back %>
+<h3>Endereço de <%= @user.name %> </h3>
+<ul>
+  <li>CEP: <%= @address.cep %></li>
+  <li>Cidade: <%= @address.city %></li>
+  <li>Bairro: <%= @address.district %></li>
+  <li>Rua: <%= @address.street %></li>
+  <li>Número: <%= @address.number %></li>
+  <% if logged_in? %>
+    <% if isAdmin? or correct_user %>
+      <td><%= link_to "Editar", edit_user_address_path(:user_id => @user.id) %></td>
+    <% end %>
+  <% end %>
+</ul>
