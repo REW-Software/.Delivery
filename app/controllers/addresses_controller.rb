@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   before_action :authorize
 
   def new
-    @user = User.find_by(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
     @address = Address.new
   end
 
