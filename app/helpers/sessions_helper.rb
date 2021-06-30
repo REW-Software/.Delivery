@@ -24,7 +24,11 @@ module SessionsHelper
   end
 
   def isAdmin?
-    @current_user.tipo == 'Administrador'
+    @current_user.type_user == 'Administrador'
   end
 
+  def correct_user
+    @user = User.find_by(id: params[:user_id])
+    current_user == @user or isAdmin?
+  end
 end
