@@ -44,8 +44,6 @@
   <% @sales.each do |sale| %>
     <li>
       <%= link_to sale.name_client, sale_path(sale, :post_id => @post.id) %>
-      <%= sale.street %>
-      <%= sale.number %>
     </li>
   <% end %>
 </ul>
