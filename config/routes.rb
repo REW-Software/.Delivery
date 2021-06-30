@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'homeAdmin' => 'home#admin'
   get 'homeDeliveryMan' => 'home#deliveryMan'
+  get 'openDeliveries' => 'home#openDeliveries'
+  get 'closedDeliveries' => 'home#closedDeliveries'
 
   resources :users
   resources :products

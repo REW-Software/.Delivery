@@ -1,54 +1,57 @@
 class SalesController < ApplicationController
-  before_action :authorizeAdmin, except: [:show, :edit, :update]
+  before_action :authorizeAdmin, except: [:show]
   def index
     @sales = Sale.all
   end
 
   def show
-    @sale = Sale.find(params[:id])
-    @product = Product.find(@sale.product_id)
+    @post = Post.find(params[:post_id])
+    @sale = @post.sales.find(params[:sale_id])
+    @products = @sale.products
   end
 
   def new
-    @sale = Sale.new
-    @product = Product.all
+    @post = Post.find(params[:post_id])
+    @sale = @post.sales.build
   end
 
   def create
-    @sale = Sale.new(sale_params)
-    @product = Product.all
+    @post = Post.find(params[:post_id])
+    @sale = @post.sales.create(sale_params)
 
     if @sale.save
-      redirect_to @sale
+      redirect_to @post
     else
       render :new
     end
   end
 
   def edit
-    @sale = Sale.find(params[:id])
-    @product = Product.all
+    @post = Post.find(params[:post_id])
+    @sale = @post.sales.find(params[:sale_id])
   end
 
   def update
-    @sale = Sale.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @sale = @post.sales.find(params[:id])
 
     if @sale.update(sale_params)
-      redirect_to @sale
+      redirect_to sale_path(@sale, :post_id => @post.id)
     else
       render :edit
     end
   end
 
   def destroy
-    @sale = Sale.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @sale = @post.sales.find(params[:sale_id])
     @sale.destroy
 
-    redirect_to sales_path
+    redirect_to post_path(@post)
   end
 
   private
   def sale_params
-    params.require(:sale).permit(:product_id, :payment_type, :quantity_product, :name_client, :phone_client, :street, :number)
+    params.require(:sale).permit(:payment_type, :name_client, :phone_client, :street, :number)
   end
 end

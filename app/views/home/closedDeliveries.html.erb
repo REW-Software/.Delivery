@@ -1,0 +1,9 @@
+<%= link_to "Voltar", homeDeliveryMan_path %>
+<h2>Entregas concluidas</h2>
+<ul>
+  <% @closedDeliveries.each do |delivery| %>
+    <li>
+      <%= link_to "Entrega", delivery %>
+    </li>
+  <% end %>
+</ul>

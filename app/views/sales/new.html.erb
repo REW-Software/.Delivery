@@ -1,4 +1,4 @@
-<%= link_to "Voltar", sales_path %>
+<%= link_to "Voltar", post_path(@post) %>
 <h1>Nova venda</h1>
 <%= form_with model: @sale do |form| %>
   <div>
@@ -41,22 +41,19 @@
   <% end %>
   </div>
 
-  <div>
-  <%= form.label :product_id, "Produto" %><br>
-  <%= form.select :product_id, @product.collect {|product| [product.name, product.id]} %>
-  <% @sale.errors.full_messages_for(:product_id).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
-  </div>
+  <% if false %>
 
-  <div>
-  <%= form.label :quantity_product, "Quantidade" %><br>
-  <%= form.number_field :quantity_product %>
-  <% @sale.errors.full_messages_for(:quantity_product).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
-  </div>
+    <div>
+    <%= form.label :product_id, "Produto" %><br>
+    <%= form.select :product_id, @product.collect {|product| [product.name, product.id]} %>
+    <% @sale.errors.full_messages_for(:product_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    </div>
 
+  <%end %>
+
+  <%= hidden_field_tag(:post_id, @post.id) %>
   <div>
     <%= form.submit "Criar Venda" %>
   </div>

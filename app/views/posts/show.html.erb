@@ -1,14 +1,51 @@
-<%= link_to "Voltar", posts_path %>
+<% if logged_in? %>
+  <% if isAdmin? %>
+    <%= link_to "Voltar", posts_path %>
+    <% else %>
+      <% case @post.status %>
+        <% when 'progress' %>
+          <%= link_to "Voltar", openDeliveries_path %>
+        <% when 'concluded' %>
+          <%= link_to "Voltar", closedDeliveries_path %>
+      <% end %>
+  <% end %>
+<% end %>
+
 <h1>Informações da entrega</h1>
 <table>
   <thead>
   <tr>
     <th>Status da entrega</th>
+    <th>Entregador</th>
   </tr>
   </thead>
   <tbody>
   <tr>
-    <td><%= @post.status %></td>
+    <% case @post.status %>
+    <% when 'progress' %>
+      <td>Em progresso</td>
+    <% when 'concluded' %>
+      <td>Concluído</td>
+    <% end %>
+    <td><%= @deliveryMan.name %></td>
+    <td><%= link_to "Editar", edit_post_path(@post) %></td>
+    <% if logged_in? %>
+      <% if isAdmin? %>
+        <td><%= link_to "Adicionar venda", new_sale_path(:post_id => @post.id) %></td>
+      <% end %>
+    <% end %>
+
   </tr>
   </tbody>
 </table>
+
+<h3>Vendas</h3>
+<ul>
+  <% @sales.each do |sale| %>
+    <li>
+      <%= link_to sale.name_client, sale_path(sale, :post_id => @post.id) %>
+      <%= sale.street %>
+      <%= sale.number %>
+    </li>
+  <% end %>
+</ul>
