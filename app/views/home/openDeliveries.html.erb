@@ -1,9 +1,9 @@
-<%= link_to "Voltar", homeDeliveryMan_path %>
+<%= link_to "Voltar", :back %>
 <h2>Entregas em progresso</h2>
 <ul>
   <% @openDeliveries.each do |delivery| %>
     <li>
-      <%= link_to "Entrega para concluir", delivery %>
+      <%= link_to "Entrega #{delivery.id}", delivery %>
     </li>
   <% end %>
 </ul>
