@@ -1,16 +1,4 @@
-<% if logged_in? %>
-  <% if isAdmin? %>
-    <%= link_to "Voltar", posts_path %>
-    <% else %>
-      <% case @post.status %>
-        <% when 'progress' %>
-          <%= link_to "Voltar", openDeliveries_path %>
-        <% when 'concluded' %>
-          <%= link_to "Voltar", closedDeliveries_path %>
-      <% end %>
-  <% end %>
-<% end %>
-
+<%= link_to "Voltar", :back %>
 <h1>Informações da entrega</h1>
 <table>
   <thead>
@@ -43,7 +31,7 @@
 <ul>
   <% @sales.each do |sale| %>
     <li>
-      <%= link_to sale.name_client, sale_path(sale, :post_id => @post.id) %>
+      <%= link_to "Vizualizar detalhes de venda", sale_path(sale, :post_id => @post.id) %>
     </li>
   <% end %>
 </ul>
