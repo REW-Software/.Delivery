@@ -5,6 +5,7 @@
   <tr>
     <th>Status da entrega</th>
     <th>Entregador</th>
+    <th>Requisição da entrega</th>
   </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
       <td>Concluído</td>
     <% end %>
     <td><%= @deliveryMan.name %></td>
+    <td><%= @post.created_at.strftime("%-d/%-m/%y %H:%M") %></td>
     <td><%= link_to "Editar", edit_post_path(@post) %></td>
     <% if logged_in? %>
       <% if isAdmin? %>
