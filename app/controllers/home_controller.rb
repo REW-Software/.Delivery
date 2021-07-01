@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   before_action :authorize
-
-  def admin; end
-
-  def deliveryMan; end
+  
+  def index
+    @user = User.find(session[:user_id])
+  end
 
   def openDeliveries
     if logged_in? and isAdmin?

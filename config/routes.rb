@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   delete 'sign_out' => 'sessions#destroy'
   root 'sessions#new'
 
-  get 'homeAdmin' => 'home#admin'
-  get 'homeDeliveryMan' => 'home#deliveryMan'
+  get 'home' => 'home#index'
   get 'openDeliveries' => 'home#openDeliveries'
   get 'closedDeliveries' => 'home#closedDeliveries'
 

@@ -5,7 +5,7 @@
         <% if logged_in? %>
           <li>
             <ul>
-              <li><%= link_to "Home Admin", homeAdmin_path %></li>
+              <li><%= link_to "Home", home_path %></li>
               <li><%= link_to "Perfil", current_user %></li>
               <li>
                 <%= link_to "Sair", sign_out_path, method: "delete" %>
