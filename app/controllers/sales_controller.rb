@@ -10,6 +10,7 @@ class SalesController < ApplicationController
     @sale = @post.sales.find(params[:id])
     @products = @sale.products
     @client = User.find_by(email: @sale.name_client)
+    @totalPrice = 0
   end
 
   def new
@@ -32,7 +33,7 @@ class SalesController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
-    @sale = @post.sales.find(params[:sale_id])
+    @sale = @post.sales.find(params[:id])
     @clients = User.where("type_user = 'Cliente'")
   end
 
@@ -49,7 +50,7 @@ class SalesController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    @sale = @post.sales.find(params[:sale_id])
+    @sale = @post.sales.find(params[:id])
     @sale.destroy
 
     redirect_to post_path(@post)

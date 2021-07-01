@@ -1,25 +1,7 @@
-<%= link_to "Voltar", homeAdmin_path %>
+<%= link_to "Voltar", :back %>
 <h1>Listagem de entregas</h1>
 <%= link_to "Adicionar entrega", new_post_path %>
-<table>
-  <thead>
-  <tr>
-    <th>Identificação</th>
-    <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= link_to "Entrega #{post.id}", post %></td>
-
-      <% case post.status %>
-      <% when 'progress' %>
-        <td>Em progresso</td>
-      <% when 'concluded' %>
-        <td>Concluído</td>
-      <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<br/>
+<%= link_to "Entregas abertas", openDeliveries_path %>
+<br/>
+<%= link_to "Entregas concluidas", closedDeliveries_path %>

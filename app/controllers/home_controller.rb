@@ -4,11 +4,19 @@ class HomeController < ApplicationController
   def deliveryMan; end
 
   def openDeliveries
-    @openDeliveries = Post.where("user_id = ? and status = 0", session[:user_id])
+    if logged_in? and isAdmin?
+      @openDeliveries = Post.where("status = 0")
+    else
+      @openDeliveries = Post.where("user_id = ? and status = 0", session[:user_id])
+    end
   end
 
   def closedDeliveries
-    @closedDeliveries = Post.where("user_id = ? and status = 1", session[:user_id])
+    if logged_in? and isAdmin?
+      @closedDeliveries = Post.where("status = 1")
+    else
+      @closedDeliveries = Post.where("user_id = ? and status = 1", session[:user_id])
+    end
   end
 
 end
