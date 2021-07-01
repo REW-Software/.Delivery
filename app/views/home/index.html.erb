@@ -1,0 +1,12 @@
+<h1>Ponto Delivery</h1>
+<br/>
+
+<% if @user.type_user == 'Admin' %>
+  <%= link_to "Usuários", users_path %>
+  <br/>
+  <%= link_to "Entregas", posts_path %>
+<% else %>
+  <%= link_to "Entregas abertas", openDeliveries_path %>
+  <br/>
+  <%= link_to "Entregas concluidas", closedDeliveries_path %>
+<% end %>
