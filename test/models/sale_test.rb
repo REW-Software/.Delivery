@@ -2,35 +2,43 @@ require "test_helper"
 
 class SaleTest < ActiveSupport::TestCase
   test "criar venda" do
-    product = Product.new(name: "produto", price: 10.00)
-    product.save
+    user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555',
+                    type_user:'DeliveryMan', password:'123456', password_confirmation:'123456')
+    assert user.save
+    post = Post.new(status: 0, user_id: user.id)
+    assert post.save
 
-    sale = Sale.new(product_id: product.id, payment_type: "money", quantity_product: 1, name_client: "cliente", phone_client: "(11)99999-1111", street: "rua principal", number: "01")
+
+    sale = Sale.new(payment_type: "money", name_client: "cliente", post_id: post.id)
     assert sale.save
   end
 
-  test "criar venda com campos invalidos" do
-    product = Product.new(name: "produto", price: 10.00)
-    product.save
+  test "criar venda com campo invalidos" do
+    user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555',
+                    type_user:'DeliveryMan', password:'123456', password_confirmation:'123456')
+    assert user.save
+    post = Post.new(status: 0, user_id: user.id)
+    assert post.save
 
-    sale = Sale.new(product_id: product.id, payment_type: "", quantity_product: 1, name_client: "", phone_client: "", street: "", number: "")
-    assert_not sale.save
-  end
 
-  test "criar venda sem produto" do
-    product = Product.new(name: "produto", price: 10.00)
-    product.save
-
-    sale = Sale.new(product_id: "", payment_type: "", quantity_product: 1, name_client: "", phone_client: "", street: "", number: "")
+    sale = Sale.new(payment_type: "money", name_client: "", post_id: post.id)
     assert_not sale.save
   end
 
   test "deletar venda existente" do
-    product = Product.new(name: "produto", price: 10.00)
-    product.save
+    user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555',
+                    type_user:'DeliveryMan', password:'123456', password_confirmation:'123456')
+    assert user.save
+    post = Post.new(status: 0, user_id: user.id)
+    assert post.save
 
-    sale = Sale.new(product_id: product.id, payment_type: "money", quantity_product: 1, name_client: "cliente", phone_client: "(11)99999-1111", street: "rua principal", number: "01")
-    sale.save
-    assert sale.delete 
+
+    sale = Sale.new(payment_type: "money", name_client: "cliente", post_id: post.id)
+    assert sale.save
+
+    id = sale.id
+    assert sale.destroy
+    sale = Sale.find_by(id: id)
+    assert_not sale
   end
 end
