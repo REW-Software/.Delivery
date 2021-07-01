@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authorize
   
   def index
     @user = User.find(session[:user_id])

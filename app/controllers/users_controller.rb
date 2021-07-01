@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @tipo = @user.tipo
+    @tipo = @user.type_user
   end
 
   def update
