@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authorize
-  before_action :authorizeAdmin
+  before_action :authorizeAdmin, except: [:show]
 
   def edit
     @post = Post.find(params[:post_id])

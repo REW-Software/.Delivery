@@ -42,9 +42,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-
-    redirect_to users_path
+    if @user.type_user == 'Administrador'
+      redirect_to @user
+    else
+      @user.destroy
+      redirect_to users_path
+    end
   end
 
   private

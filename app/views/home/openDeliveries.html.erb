@@ -1,4 +1,11 @@
-<%= link_to "Voltar", :back %>
+<% if logged_in? %>
+  <% if isAdmin? %>
+    <%= link_to "Voltar", posts_path %>
+  <% else %>
+    <%= link_to "Voltar", home_path %>
+  <% end %>
+<% end %>
+
 <h2>Entregas em progresso</h2>
 <ul>
   <% @openDeliveries.each do |delivery| %>
