@@ -46,7 +46,7 @@
     <% if @tipo == 'DeliveryMan' %>
       <%= form.select :type_user, ['DeliveryMan'] , id: "newUserTipo"  %>
     <% else %>
-      <%= form.select :type_user, ['Administrador', 'DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+      <%= form.select :type_user, ['DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
     <% end %>
     <% @user.errors.full_messages_for(:type_user).each do |message| %>
       <div><%= message %></div>
