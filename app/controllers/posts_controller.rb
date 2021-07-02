@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @deliveryMan = User.find(@post.user_id)
     @sales = @post.sales
+    @postTime = @post.created_at - 10800
   end
 
   def edit

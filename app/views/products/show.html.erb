@@ -15,9 +15,13 @@
       <td><%= number_to_currency @product.price, unit: "R$" %></td>
       <td><%= number_to_currency @product.discount, unit: "R$" %></td>
       <td><%= @product.quantity_product %></td>
-      <td><%= link_to "Editar", edit_product_path(@product, :sale_id => @sale.id, :post_id => @post.id) %></td>
-      <td><%= link_to "Deletar", product_path(@product, :sale_id => @sale.id, :post_id => @post.id), method: :delete,
-                      data: {confirm: "Você está seguro desta ação?"} %></td>
+      <% if logged_in? %>
+        <% if isAdmin? %>
+          <td><%= link_to "Editar", edit_product_path(@product, :sale_id => @sale.id, :post_id => @post.id) %></td>
+          <td><%= link_to "Deletar", product_path(@product, :sale_id => @sale.id, :post_id => @post.id), method: :delete,
+                          data: {confirm: "Você está seguro desta ação?"} %></td>
+        <% end %>
+      <% end %>
     </tr>
   </tbody>
 </table>

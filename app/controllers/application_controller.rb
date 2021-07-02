@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def authorizeAdmin
     if logged_in?
       unless isAdmin?
-        redirect_to @current_user
+        redirect_to home_path
       end
     end
   end
