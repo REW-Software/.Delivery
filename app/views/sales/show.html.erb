@@ -10,7 +10,12 @@
   <tbody>
   <tr>
     <td><%= link_to @client.name, user_address_path(:user_id => @client.id, :delivery => 1)  %></td>
-    <td><%= @sale.payment_type %></td>
+    <% case @sale.payment_type %>
+    <% when 'money' %>
+      <td>Em dinheiro</td>
+    <% when 'card' %>
+      <td>No cartão</td>
+    <% end %>
     <% if logged_in? %>
       <% if isAdmin? %>
         <td><%= link_to "Editar", edit_sale_path(@sale, :post_id => @post.id) %></td>
