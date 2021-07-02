@@ -13,6 +13,7 @@ install:
 script:
   - bundle exec rake db:setup
   - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rake db:seed RAILS_ENV=test
   - bundle exec rails webpacker:compile
 
   - bundle exec rails test test/models/product_test.rb
