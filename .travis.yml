@@ -10,6 +10,9 @@ install:
   - npm i -g yarn
   - yarn
 
+addons:
+  firefox: latest
+
 script:
   - bundle exec rake db:setup
   - bundle exec rake db:migrate RAILS_ENV=test
