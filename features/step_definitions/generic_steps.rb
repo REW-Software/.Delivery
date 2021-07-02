@@ -1,3 +1,8 @@
+Given ('Eu estou na pagina home') do
+  visit home_path
+  expect(page).to have_current_path(home_path)
+end
+
 When('Eu clico no {string}') do |link_name|
   click_link link_name
 end

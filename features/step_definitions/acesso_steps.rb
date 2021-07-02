@@ -32,11 +32,6 @@ Given('Eu estou logado pelas credenciais email {string} e senha {string}') do |e
   expect(page).to have_current_path(/users\/\d+/)
 end
 
-Given ('Eu estou na pagina home') do
-  visit home_path
-  expect(page).to have_current_path(home_path)
-end
-
 When ('Eu preencho email {string} e senha {string}') do |email, senha|
   fill_in 'loginEmail', with: email
   fill_in 'loginPassword', with: senha
