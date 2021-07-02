@@ -11,7 +11,7 @@
 
   <div>
     <%= form.label :status, "Status da entrega" %><br>
-      <%= form.select :status, [['Em andamento', :progress], ['Concluido', :concluded]]  %>
+      <%= form.select :status, [['Em andamento', :progress], ['Concluído', :concluded]]  %>
     <% @post.errors.full_messages_for(:status).each do |message| %>
       <div><%= message %></div>
     <% end %>
