@@ -18,7 +18,7 @@ Given('Tem registrado um usuario com nome {string}, nascimento {string}, email {
 
   click_button 'Criar Usuário'
 
-  expect(page).to have_current_path('/')
+  expect(page).not_to have_current_path('/users/new')
 end
 
 Given('Eu estou logado pelas credenciais email {string} e senha {string}') do |email, password|
