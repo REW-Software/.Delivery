@@ -1,51 +1,50 @@
-require 'webdrivers'
 
-Given("Eu estou na pagina de entregas") do
-  visit "/posts"
+Given ('Tem registrado uma entrega com entregador {string} e status da entrega {string}') do |entregador, status|
+  
+  # garante que está na pagina de criar entrega
+  visit '/posts/new'
+  expect(page).to have_current_path('/posts/new')
+
+  # preenche campos
+  select(entregador, from: 'post[user_id]')
+  select(status, from: 'post[status]')
+
+  # cria
+  click_button 'Criar Entrega'
+
+  # espera que tenha sido criado
+  expect(page).not_to have_current_path('/posts/new')
 end
 
-Given("Possui registrado uma entrega com venda {string}, entregador {string}, status {string}") do |sale, user, status|
-  visit "/posts"
-  click_link "Adicionar entrega"
-
-  fill_in "post[sale]",	with: sale
-  fill_in "post[user]",	with: user
-  fill_in "post[status]",	with: status
+When ('Eu preencho entregador {string} e status da entrega {string}') do |entregador, status|
+  select(entregador, from: 'post[user_id]')
+  select(status, from: 'post[status]')
 end
 
-When("Eu clico em adicionar entrega") do
-  click_link "Adicionar entrega"
+When ('Eu clico na entrega com entregador {string}') do |entregador|
+  # intera por todas as entregas
+  
+  page.all(:link, 'Entrega').each do |link|
+    link.click
+
+    # acha o entregador
+    if page.has_no_content? entregador
+      page.go_back
+    end
+  end
+
+  expect(page).to have_current_path(/posts\/\d+/)
 end
 
-When("Eu preencho com venda {string}, entregador {string}, status {string}") do |sale, user, status|
-  select sale,	:from => "Sale"
-  select user,	:from => "User"
-  select(status, from: 'status')
-end
+Then ('Eu vejo uma entrega com o entregador {string} e status da entrega {string}') do |entregador, status|
+  # verifica se tá na pagina de visualizar entrega
+  expect(page).to have_current_path(/posts\/\d+/)
 
-And("Eu clico em criar nova entrega") do
-  click_button "Criar entrega"
-end
-
-Then("Eu vejo que uma entrega com venda {string}, entregador {string}, status {string}") do |sale, user, status|
-  visit "/posts"
-  click_link post
-
-  expect(page).to have_content(sale)
-  expect(page).to have_content(user)
+  #verifica se tem o nome do entregador na pagina
+  expect(page).to have_content(entregador)
   expect(page).to have_content(status)
 end
 
-When ('Eu clico em editar entrega') do
-  click_link 'Editar'
-end
-
-And ('Eu clico em atualizar entrega') do
-  click_button 'Editar entrega'
-end
-
-Then("Eu vejo uma entrega com venda {string}, entregador {string}, status {string}") do |sale, user, status|
-  expect(page).to have_content(sale)
-  expect(page).to have_content(user)
-  expect(page).to have_content(status)
+Then ('Eu vejo que ha entregas na lista') do
+  expect(page).to have_content(/Entrega \d+/)
 end
