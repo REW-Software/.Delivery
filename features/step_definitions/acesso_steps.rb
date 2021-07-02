@@ -1,90 +1,49 @@
-Given('Eu estou logado como um administrador') do
-  visit '/users/new'
-  fill_in 'newUserName', with: 'romulo'
-  fill_in 'newUserBirth', with: '05-12-2000'
-  fill_in 'newUserEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'newUserCPF', with: '118.129.724-90'
-  fill_in 'newUserRG', with: '125345'
-  fill_in 'newUserStreet', with: 'manoel Braga'
-  fill_in 'newUserNumber', with: '162'
-  fill_in 'newUserPassword', with: '123456'
-  fill_in 'newUserPasswordConfirmation', with: '123456'
-  select('Administrador', from: 'user_tipo')
-  click_button 'Criar Usuário'
-  fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'loginPassword', with: '123456'
-  click_button 'Entrar'
-end
-
-Given('Possui registrado um usuario com email {string} e senha {string}') do |email, senha|
-  visit '/users/new'
-  fill_in 'newUserName', with: 'uzumaki'
-  fill_in 'newUserBirth', with: '05-12-1932'
-  fill_in 'newUserEmail', with: email
-  fill_in 'newUserCPF', with: '207.200.360-11'
-  fill_in 'newUserRG', with: '233446916'
-  fill_in 'newUserStreet', with: 'A Rua'
-  fill_in 'newUserNumber', with: '901'
-  fill_in 'newUserPassword', with: senha
-  fill_in 'newUserPasswordConfirmation', with: senha
-  select('Administrador', from: 'user_tipo')
-  click_button 'Criar Usuário'
-end
-
-Given ('Eu estou na pagina de perfil') do
-  visit '/'
-  click_link 'Perfil'
-end
 
 Given ('Eu estou na pagina de login') do
-  visit '/'
-  expect(page).to have_current_path('/')
+  visit root_path
+  expect(page).to have_current_path(root_path)
 end
 
-Given ('Eu estou logado') do
+Given('Tem registrado um usuario com nome {string}, nascimento {string}, email {string}, cpf {string}, rg {string}, perfil de usuario {string}, senha {string}') do |name, birth, email, cpf, rg, user_type, password|
   visit '/users/new'
-  fill_in 'newUserName', with: 'romulo'
-  fill_in 'newUserBirth', with: '05-12-2000'
-  fill_in 'newUserEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'newUserCPF', with: '118.129.724-90'
-  fill_in 'newUserRG', with: '125345'
-  fill_in 'newUserStreet', with: 'manoel Braga'
-  fill_in 'newUserNumber', with: '162'
-  fill_in 'newUserPassword', with: '123456'
-  fill_in 'newUserPasswordConfirmation', with: '123456'
-  select('Administrador', from: 'user_tipo')
+
+  fill_in 'newUserName', with: name
+  fill_in 'newUserBirth', with: birth
+  fill_in 'newUserEmail', with: email
+  fill_in 'newUserCPF', with: cpf
+  fill_in 'newUserRG', with: rg
+  select(user_type, from: 'user_type_user')
+  fill_in 'newUserPassword', with: password
+  fill_in 'newUserPasswordConfirmation', with: password
+
   click_button 'Criar Usuário'
-  fill_in 'loginEmail', with: 'joseromulo.10@hotmail.com'
-  fill_in 'loginPassword', with: '123456'
-  click_button 'Entrar'
+
+  expect(page).not_to have_current_path('/users/new')
 end
 
-When ('Eu logo com email {string} e senha {string}') do |email, password|
+Given('Eu estou logado pelas credenciais email {string} e senha {string}') do |email, password|
+  visit root_path
+  expect(page).to have_current_path(root_path)
+
   fill_in 'loginEmail', with: email
   fill_in 'loginPassword', with: password
   click_button 'Entrar'
+
+  expect(page).to have_current_path(/users\/\d+/)
 end
 
-When ('Eu preencho senha e confirmação de senha com os dados do administrador') do
-  fill_in 'newUserPassword', with: '123456'
-  fill_in 'newUserPasswordConfirmation', with: '123456'
-end
-
-When ('Eu preencho o email {string}, e senha {string}') do |email, senha|
+When ('Eu preencho email {string} e senha {string}') do |email, senha|
   fill_in 'loginEmail', with: email
   fill_in 'loginPassword', with: senha
 end
 
-When ('Eu clico em entrar') do
-  click_button 'Entrar'
+When ('Eu confirmo a acao') do
+  page.driver.browser.switch_to.alert.accept
 end
 
-When ('Eu clico em sair') do
-  click_link 'Sair'
-end
-
-Then ('Eu vejo que estou na pagina de perfil do usuario') do
+Then ('Eu vejo que estou na pagina de perfil do usuario {string}') do |username|
   expect(page).to have_current_path(/users\/\d+/)
+  expect(page).to have_content(username)
 end
 
 Then ('Eu vejo que estou na pagina de login') do
