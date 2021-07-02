@@ -1,4 +1,11 @@
-<%= link_to "Voltar", :back %>
+<% case @post.status %>
+<% when 'progress' %>
+  <%= link_to "Voltar", openDeliveries_path %>
+<% when 'concluded' %>
+  <%= link_to "Voltar", closedDeliveries_path %>
+<% end %>
+
+
 <h1>Informações da entrega</h1>
 <table>
   <thead>
