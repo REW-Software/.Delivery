@@ -10,15 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_164403) do
+ActiveRecord::Schema.define(version: 2021_07_01_192449) do
 
-  create_table "posts", force: :cascade do |t|
-    t.integer "status"
-    t.integer "sale_id", null: false
+  create_table "addresses", force: :cascade do |t|
+    t.string "cep"
+    t.string "city"
+    t.string "district"
+    t.string "street"
+    t.string "number"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sale_id"], name: "index_posts_on_sale_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "status"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -27,19 +37,19 @@ ActiveRecord::Schema.define(version: 2021_06_28_164403) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sale_id"
+    t.integer "product_quantity"
+    t.integer "discount"
+    t.index ["sale_id"], name: "index_products_on_sale_id"
   end
 
   create_table "sales", force: :cascade do |t|
-    t.integer "product_id", null: false
     t.integer "payment_type", null: false
-    t.integer "quantity_product", null: false
-    t.string "name_client", null: false
-    t.string "phone_client", null: false
-    t.string "street", null: false
-    t.string "number", null: false
+    t.string "client_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_sales_on_product_id"
+    t.integer "post_id", null: false
+    t.index ["post_id"], name: "index_sales_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,15 +58,14 @@ ActiveRecord::Schema.define(version: 2021_06_28_164403) do
     t.string "email"
     t.string "cpf"
     t.string "rg"
-    t.string "street"
-    t.string "number"
-    t.string "tipo"
+    t.string "user_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
   end
 
-  add_foreign_key "posts", "sales"
+  add_foreign_key "addresses", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "sales", "products"
+  add_foreign_key "products", "sales"
+  add_foreign_key "sales", "posts"
 end

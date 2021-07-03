@@ -3,9 +3,9 @@
 <%= form_with model: @sale do |form| %>
 
   <div>
-    <%= form.label :name_client, "Nome do cliente" %><br>
-    <%= form.select :name_client, @clients.collect {|client| [client.name, client.email]} %>
-    <% @sale.errors.full_messages_for(:name_client).each do |message| %>
+    <%= form.label :client_name, "Nome do cliente" %><br>
+    <%= form.select :client_name, @clients.collect {|client| [client.name, client.email]} %>
+    <% @sale.errors.full_messages_for(:client_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

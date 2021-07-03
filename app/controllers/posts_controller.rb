@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @users = User.where("type_user = 'DeliveryMan'")
+    @users = User.where("user_type = 'DeliveryMan'")
   end
 
   def create
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @users = User.where("type_user = 'DeliveryMan'")
+    @users = User.where("user_type = 'DeliveryMan'")
   end
 
   def update

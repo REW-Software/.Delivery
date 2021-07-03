@@ -42,13 +42,13 @@
   </div>
 
   <div>
-    <%= form.label :type_user, "Perfil de usuário" %><br>
+    <%= form.label :user_type, "Perfil de usuário" %><br>
     <% if @tipo == 'DeliveryMan' %>
-      <%= form.select :type_user, ['DeliveryMan'] , id: "newUserTipo"  %>
+      <%= form.select :user_type, ['DeliveryMan'] , id: "newUserTipo"  %>
     <% else %>
-      <%= form.select :type_user, ['DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
+      <%= form.select :user_type, ['DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
     <% end %>
-    <% @user.errors.full_messages_for(:type_user).each do |message| %>
+    <% @user.errors.full_messages_for(:user_type).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

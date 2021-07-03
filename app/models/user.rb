@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :name, presence: true, length: { minimum: 4, maximum: 100 }
+  validates :name, presence: true, length: { minimum: 4, maximum: 100 } 
 
   validates :password, presence: true, length: {minimum: 6}
 
@@ -21,5 +21,5 @@ class User < ApplicationRecord
   VALID_RG_FORMAT = /\A\d+\Z/.freeze
   validates :rg, presence: true, length: { maximum: 14 }, format: { with: VALID_RG_FORMAT }
 
-  validates :type_user, presence: true
+  validates :user_type, presence: true
 end

@@ -4,5 +4,5 @@ class Sale < ApplicationRecord
 
   enum payment_type: [:money, :card]
 
-  validates :name_client, presence: true, length: { minimum: 4, maximum: 100 }
+  validates :client_name, presence: true, length: { minimum: 4, maximum: 100 }
 end

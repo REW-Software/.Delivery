@@ -33,8 +33,8 @@
     <% @products.each do |product| %>
       <li>
         <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id) %>
-        <%= product.quantity_product %> unidades
-        <% @totalPrice += (product.price - product.discount ) * product.quantity_product %>
+        <%= product.product_quantity %> unidades
+        <% @totalPrice += (product.price - product.discount ) * product.product_quantity %>
       </li>
     <% end %>
   </ul>

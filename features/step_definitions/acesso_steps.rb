@@ -12,7 +12,7 @@ Given('Tem registrado um usuario com nome {string}, nascimento {string}, email {
   fill_in 'newUserEmail', with: email
   fill_in 'newUserCPF', with: cpf
   fill_in 'newUserRG', with: rg
-  select(user_type, from: 'user_type_user')
+  select(user_type, from: 'user_user_type')
   fill_in 'newUserPassword', with: password
   fill_in 'newUserPasswordConfirmation', with: password
 

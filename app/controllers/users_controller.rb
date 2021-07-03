@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @tipo = @user.type_user
+    @tipo = @user.user_type
   end
 
   def update
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.type_user == 'Administrador'
+    if @user.user_type == 'Administrador'
       redirect_to @user
     else
       @user.destroy
@@ -52,6 +52,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :birth, :email, :cpf, :rg, :type_user, :password, :password_confirmation)
+    params.require(:user).permit(:name, :birth, :email, :cpf, :rg, :user_type, :password, :password_confirmation)
   end
 end
