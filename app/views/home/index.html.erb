@@ -1,7 +1,7 @@
 <h1>Ponto Delivery</h1>
 <br/>
 
-<% if @user.type_user == 'Administrador' %>
+<% if @user.user_type == 'Administrador' %>
   <%= link_to "Usuários", users_path %>
   <br/>
   <%= link_to "Entregas", posts_path %>

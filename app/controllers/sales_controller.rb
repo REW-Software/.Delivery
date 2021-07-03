@@ -9,20 +9,20 @@ class SalesController < ApplicationController
     @post = Post.find(params[:post_id])
     @sale = @post.sales.find(params[:id])
     @products = @sale.products
-    @client = User.find_by(email: @sale.name_client)
+    @client = User.find_by(email: @sale.client_name)
     @totalPrice = 0
   end
 
   def new
     @post = Post.find(params[:post_id])
     @sale = @post.sales.build
-    @clients = User.where("type_user = 'Cliente'")
+    @clients = User.where("user_type = 'Cliente'")
   end
 
   def create
     @post = Post.find(params[:post_id])
     @sale = @post.sales.create(sale_params)
-    @clients = User.where("type_user = 'Cliente'")
+    @clients = User.where("user_type = 'Cliente'")
 
     if @sale.save
       redirect_to @post
@@ -34,7 +34,7 @@ class SalesController < ApplicationController
   def edit
     @post = Post.find(params[:post_id])
     @sale = @post.sales.find(params[:id])
-    @clients = User.where("type_user = 'Cliente'")
+    @clients = User.where("user_type = 'Cliente'")
   end
 
   def update
@@ -58,6 +58,6 @@ class SalesController < ApplicationController
 
   private
   def sale_params
-    params.require(:sale).permit(:payment_type, :name_client)
+    params.require(:sale).permit(:payment_type, :client_name)
   end
 end

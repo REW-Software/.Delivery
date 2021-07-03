@@ -11,7 +11,7 @@
   <tbody>
   <% @sales.each do |sale| %>
     <tr>
-      <td><%= link_to sale.name_client, sale %></td>
+      <td><%= link_to sale.client_name, sale %></td>
       <td><%= sale.payment_type %></td>
       <td><%= sale.id  %></td>
     </tr>

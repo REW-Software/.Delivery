@@ -18,10 +18,10 @@
       <td><%= @user.email %></td>
       <td><%= @user.cpf %></td>
       <td><%= @user.rg %></td>
-      <td><%= @user.type_user %></td>
+      <td><%= @user.user_type %></td>
       <td><%= link_to "Endereço", user_address_path(:user_id => @user.id)  %></td>
       <td><%= link_to "Editar", edit_user_path(@user) , id:'Editar', name:'Editar'%></td>
-      <% if @user.type_user != 'Administrador' %>
+      <% if @user.user_type != 'Administrador' %>
         <td><%= link_to "Deletar", user_path(@user), method: :delete,
                         data: {confirm: "Você está seguro desta ação?"} %></td>
       <% end %>

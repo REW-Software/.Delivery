@@ -15,7 +15,7 @@ When('Eu preencho o formulario com nome {string}, nascimento {string}, email {st
   fill_in 'newUserEmail', with: email
   fill_in 'newUserCPF', with: cpf
   fill_in 'newUserRG', with: rg
-  select(user_type, from: 'user_type_user')
+  select(user_type, from: 'user_user_type')
   fill_in 'newUserPassword', with: password
   fill_in 'newUserPasswordConfirmation', with: password_confirmation
 end

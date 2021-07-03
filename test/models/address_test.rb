@@ -6,7 +6,7 @@ class AddressTest < ActiveSupport::TestCase
   # end
   test "criar address valido" do
     user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555',
-                    type_user:'DeliveryMan', password:'123456', password_confirmation:'123456')
+                    user_type:'DeliveryMan', password:'123456', password_confirmation:'123456')
 
     assert user.save
 
@@ -16,7 +16,7 @@ class AddressTest < ActiveSupport::TestCase
 
   test "criar address com cep invalido" do
     user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555',
-                    type_user:'DeliveryMan', password:'123456', password_confirmation:'123456')
+                    user_type:'DeliveryMan', password:'123456', password_confirmation:'123456')
 
     assert user.save
 
@@ -26,7 +26,7 @@ class AddressTest < ActiveSupport::TestCase
 
   test "excluir address" do
     user = User.new(name:'Romulo', birth:'05/12/2000', email:'joseromulo@hotmail.com', cpf:'118.129.724-90', rg:'555555',
-                    type_user:'DeliveryMan', password:'123456', password_confirmation:'123456')
+                    user_type:'DeliveryMan', password:'123456', password_confirmation:'123456')
 
     assert user.save
 

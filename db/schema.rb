@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 2021_07_01_192449) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sale_id"
-    t.integer "quantity_product"
+    t.integer "product_quantity"
     t.integer "discount"
     t.index ["sale_id"], name: "index_products_on_sale_id"
   end
 
   create_table "sales", force: :cascade do |t|
     t.integer "payment_type", null: false
-    t.string "name_client", null: false
+    t.string "client_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "post_id", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_07_01_192449) do
     t.string "email"
     t.string "cpf"
     t.string "rg"
-    t.string "type_user"
+    t.string "user_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

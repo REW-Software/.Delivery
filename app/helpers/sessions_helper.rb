@@ -24,7 +24,7 @@ module SessionsHelper
   end
 
   def isAdmin?
-    @current_user.type_user == 'Administrador'
+    @current_user.user_type == 'Administrador'
   end
 
   def correct_user
