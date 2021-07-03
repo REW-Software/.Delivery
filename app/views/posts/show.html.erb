@@ -29,6 +29,8 @@
     <% if logged_in? %>
       <% if isAdmin? %>
         <td><%= link_to "Adicionar venda", new_sale_path(:post_id => @post.id) %></td>
+        <td><%= link_to "Deletar", post_path(@post), method: :delete,
+                        data: {confirm: "Você está seguro desta ação?"} %></td>
       <% end %>
     <% end %>
 

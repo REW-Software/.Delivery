@@ -32,9 +32,9 @@ Given('Eu estou logado pelas credenciais email {string} e senha {string}') do |e
   expect(page).to have_current_path(/users\/\d+/)
 end
 
-When ('Eu preencho email {string} e senha {string}') do |email, senha|
+When ('Eu preencho email {string} e senha {string}') do |email, password|
   fill_in 'loginEmail', with: email
-  fill_in 'loginPassword', with: senha
+  fill_in 'loginPassword', with: password
 end
 
 When ('Eu confirmo a acao') do
