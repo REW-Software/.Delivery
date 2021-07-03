@@ -19,7 +19,6 @@ addons:
 
 script:
   - rake db:migrate RAILS_ENV=test
-  - rake db:seed RAILS_ENV=test
   - rails webpacker:compile
 
   - rails test test/models/product_test.rb
@@ -29,6 +28,7 @@ script:
   - rails test test/models/post_test.rb
   - rails test test/models/product_test.rb
   
+  - rake db:seed RAILS_ENV=test
   - cucumber features/product.feature
   - cucumber features/sale.feature
   - cucumber features/user.feature
