@@ -22,7 +22,6 @@ class SalesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @sale = @post.sales.create(sale_params)
-    @clients = User.where("user_type = 'Cliente'")
 
     if @sale.save
       redirect_to @post

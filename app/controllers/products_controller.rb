@@ -7,10 +7,6 @@ class ProductsController < ApplicationController
     @sale = @post.sales.find(params[:sale_id])
     @product = @sale.products.find(params[:id])
   end
-  
-  def index
-    @products = Product.all
-  end
 
   def new
     @post = Post.find(params[:post_id])
