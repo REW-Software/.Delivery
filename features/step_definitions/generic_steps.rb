@@ -4,11 +4,11 @@ Given ('Eu estou na pagina home') do
 end
 
 When('Eu clico no {string}') do |link_name|
-  click_link link_name
+  click_last_link link_name
 end
 
 When('Eu clico no botao {string}') do |button_name|
-  click_button button_name 
+  click_last_button button_name
 end
 
 When('Eu clico em editar') do 
