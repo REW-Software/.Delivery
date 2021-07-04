@@ -7,7 +7,7 @@
 <% end %>
 <h2>Entregas concluidas</h2>
 <ul>
-  <% @closedDeliveries.each do |delivery| %>
+  <% @closed_deliveries.each do |delivery| %>
     <li>
       <%= link_to "Entrega #{delivery.id}", delivery %>
     </li>

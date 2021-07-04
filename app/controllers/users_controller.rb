@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @newDeliveryMan = params[:newClient]
+    @new_user_non_admin= params[:newClient]
   end
 
   def create

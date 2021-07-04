@@ -23,8 +23,8 @@
     <% when 'concluded' %>
       <td>Concluído</td>
     <% end %>
-    <td><%= @deliveryMan.name %></td>
-    <td><%= @postTime.strftime("%-d/%-m/%y %H:%M")%></td>
+    <td><%= @delivery_man.name %></td>
+    <td><%= @post_time.strftime("%-d/%-m/%y %H:%M")%></td>
     <td><%= link_to "Editar", edit_post_path(@post) %></td>
     <% if logged_in? %>
       <% if isAdmin? %>
