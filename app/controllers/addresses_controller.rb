@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   before_action :authorize
-  before_action :correct_user?, except: [:show]
+  before_action :check_user_id, except: [:show]
 
   def new
     @user = User.find_by(id: params[:user_id])
