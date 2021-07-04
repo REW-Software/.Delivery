@@ -1,28 +1,3 @@
 <%= link_to "Voltar", :back %>
 <h1>Editar entrega</h1>
-<%= form_with model: @post do |form| %>
-  <div>
-    <%= form.label :status, "Status" %><br>
-    <%= form.select :status, [['Em andamento', :progress], ['Concluído', :concluded]] %>
-    <% @post.errors.full_messages_for(:status).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <% if logged_in? %>
-    <% if isAdmin? %>
-      <div>
-        <%= form.label :user_id, "Entregador" %><br>
-        <%= form.select :user_id, @users.collect {|user| [user.name, user.id]} %>
-        <% @post.errors.full_messages_for(:user_id).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-
-
-  <div>
-    <%= form.submit "Atualizar entrega"%>
-  </div>
-<% end %>
+<%= render "form", {post: @post, users: @users, button_text: "Atualizar entrega"} %>
