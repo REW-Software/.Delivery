@@ -19,6 +19,10 @@ When('Eu clico em deletar') do
   click_link 'Deletar'
 end
 
+When ('Eu confirmo a acao') do
+  page.driver.browser.switch_to.alert.accept
+end
+
 Then('Eu vejo uma mensagem de email invalido') do
   expect(page).to have_content('endereço de e-mail não é válido')
 end

@@ -37,10 +37,6 @@ When ('Eu preencho email {string} e senha {string}') do |email, password|
   fill_in 'loginPassword', with: password
 end
 
-When ('Eu confirmo a acao') do
-  page.driver.browser.switch_to.alert.accept
-end
-
 Then ('Eu vejo que estou na pagina de perfil do usuario {string}') do |username|
   expect(page).to have_current_path(/users\/\d+/)
   expect(page).to have_content(username)
