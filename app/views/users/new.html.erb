@@ -43,7 +43,7 @@
 
   <div>
     <%= form.label :user_type, "Perfil de usuário" %><br>
-    <% if @newDeliveryMan %>
+    <% if @new_user_non_admin %>
       <%= form.select :user_type, ['DeliveryMan'] , id: "newUserTipo"  %>
     <% else %>
       <%= form.select :user_type, ['DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>

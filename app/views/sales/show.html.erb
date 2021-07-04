@@ -9,7 +9,7 @@
   </thead>
   <tbody>
   <tr>
-    <td><%= link_to @client.name, user_address_path(:user_id => @client.id, :delivery => 1)  %></td>
+    <td><%= link_to @client.name, user_address_path(:user_id => @client.id)  %></td>
     <% case @sale.payment_type %>
     <% when 'money' %>
       <td>Em dinheiro</td>
@@ -34,8 +34,8 @@
       <li>
         <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id) %>
         <%= product.product_quantity %> unidades
-        <% @totalPrice += (product.price - product.discount ) * product.product_quantity %>
+        <% @total_price += (product.price - product.discount ) * product.product_quantity %>
       </li>
     <% end %>
   </ul>
-<p><%= "Preço total: #{@totalPrice}" %></p>
+<p><%= "Preço total: #{@total_price}" %></p>

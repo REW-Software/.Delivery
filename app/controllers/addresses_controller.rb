@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   before_action :authorize
+  before_action :correct_user?, except: [:show]
 
   def new
     @user = User.find_by(id: params[:user_id])
@@ -8,10 +9,13 @@ class AddressesController < ApplicationController
 
   def create
     @user = User.find_by(id: params[:user_id])
-    #@address = Address.new(address_params)
     @address = @user.create_address(address_params)
 
-    redirect_to @user
+    if @address.save
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   def show
@@ -32,10 +36,12 @@ class AddressesController < ApplicationController
     @user = User.find_by(id: params[:id])
     @address = @user.address
 
-    @address.update(address_params)
-    @address.save
+    if @address.update(address_params)
+      redirect_to @user
+    else
+      render :edit
+    end
 
-    redirect_to @user
   end
 
   def address_params

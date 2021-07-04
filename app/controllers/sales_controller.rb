@@ -1,16 +1,13 @@
 class SalesController < ApplicationController
   before_action :authorize
   before_action :authorizeAdmin, except: [:show]
-  def index
-    @sales = Sale.all
-  end
 
   def show
     @post = Post.find(params[:post_id])
     @sale = @post.sales.find(params[:id])
     @products = @sale.products
     @client = User.find_by(email: @sale.client_name)
-    @totalPrice = 0
+    @total_price = 0
   end
 
   def new
@@ -22,7 +19,6 @@ class SalesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @sale = @post.sales.create(sale_params)
-    @clients = User.where("user_type = 'Cliente'")
 
     if @sale.save
       redirect_to @post

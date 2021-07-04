@@ -23,9 +23,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @deliveryMan = User.find(@post.user_id)
+    @delivery_man = User.find(@post.user_id)
     @sales = @post.sales
-    @postTime = @post.created_at - 10800
+    @post_time = @post.created_at - 10800
   end
 
   def edit
@@ -41,6 +41,7 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
