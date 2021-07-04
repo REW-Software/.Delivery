@@ -54,7 +54,7 @@ Then('Eu vejo que o usuario de nome {string} e cpf {string} nao esta na lista de
   # verifica presença de usuario na lista(nome não é necessariamente unico)
 
   #intera por todos os usuarios que possui o mesmo nome
-  all(:link, name) do
+  page.all(:link, name).each do |link|
     visit link['href']
     expect(page).to have_current_path(/users\/\d+/)
 
