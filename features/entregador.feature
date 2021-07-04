@@ -25,7 +25,7 @@ Feature: Funções de entregador
     And Eu estou na pagina home
     When Eu clico no 'Entregas abertas'
     And Eu clico na entrega com entregador 'deliveryMan'
-    And Eu clico em editar
+    And Eu clico no 'Editar'
     And Eu troco o status para 'Concluído'
     Then Eu vejo que o status da entrega foi mudado para 'Concluído'
 
@@ -35,7 +35,7 @@ Feature: Funções de entregador
     And Eu estou na pagina home
     When Eu clico no 'Entregas concluidas'
     And Eu clico na entrega com entregador 'deliveryMan'
-    And Eu clico em editar
+    And Eu clico no 'Editar'
     And Eu troco o status para 'Em andamento'
     Then Eu vejo que o status da entrega foi mudado para 'Em andamento'
 

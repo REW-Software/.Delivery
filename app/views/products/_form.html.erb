@@ -16,13 +16,13 @@
       <% end %>
     </div>
 
-      <div class="field">
-        <%= form.label :discount, "Disconto?(por unidade)" %>
-        <%= form.number_field :discount, min: 0.0, step: 0.01 %>
-        <% @product.errors.full_messages_for(:discount).each do |message| %>
-          <div><%= message %></div>
-        <% end %>
-      </div>
+    <div class="field">
+      <%= form.label :discount, "Desconto(por unidade)" %>
+      <%= form.number_field :discount, min: 0.0, step: 0.01 %>
+      <% @product.errors.full_messages_for(:discount).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
     <div>
       <%= form.label :product_quantity, "Quantidade" %><br>
@@ -35,6 +35,6 @@
     <%= hidden_field_tag(:sale_id, @sale.id) %>
     <%= hidden_field_tag(:post_id, @post.id) %>
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit button_text %>
     </div>
 <% end %>

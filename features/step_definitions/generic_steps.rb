@@ -4,19 +4,15 @@ Given ('Eu estou na pagina home') do
 end
 
 When('Eu clico no {string}') do |link_name|
-  click_link link_name
+  click_last_link link_name
 end
 
 When('Eu clico no botao {string}') do |button_name|
-  click_button button_name 
+  click_last_button button_name
 end
 
-When('Eu clico em editar') do 
-  click_link 'Editar'
-end
-
-When('Eu clico em deletar') do
-  click_link 'Deletar'
+When ('Eu confirmo a acao') do
+  page.driver.browser.switch_to.alert.accept
 end
 
 Then('Eu vejo uma mensagem de email invalido') do

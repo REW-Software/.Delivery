@@ -55,7 +55,7 @@ Then('Eu vejo que o usuario de nome {string} e cpf {string} nao esta na lista de
 
   #intera por todos os usuarios que possui o mesmo nome
   all(:link, name) do
-    link.click
+    visit link['href']
     expect(page).to have_current_path(/users\/\d+/)
 
     if page.have_content? name
