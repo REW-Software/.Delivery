@@ -25,7 +25,7 @@ When ('Eu clico na entrega com entregador {string}') do |entregador|
   # intera por todas as entregas
   
   page.all(:link, 'Entrega').each do |link|
-    link.click
+    visit link['href']
 
     # acha o entregador
     if page.has_no_content? entregador
