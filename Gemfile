@@ -8,6 +8,8 @@ gem 'rails-i18n'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 
+gem 'bootstrap', '~> 5.0.0'
+gem 'jquery-rails'
 gem 'bcrypt'
 gem 'validates_timeliness', '~> 4.0'
 # Use Puma as the app server
