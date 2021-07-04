@@ -3,22 +3,37 @@
   <p>
     <%= form.label :cep, "CEP" %><br>
     <%= form.text_field :cep, placeholder: "xxxxx-xxx" %>
+    <% @address.errors.full_messages_for(:cep).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
   </p>
   <p>
     <%= form.label :city, "Cidade" %><br>
     <%= form.text_field :city %>
+    <% @address.errors.full_messages_for(:city).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
   </p>
   <p>
     <%= form.label :district, "Bairro" %><br>
     <%= form.text_field :district %>
+    <% @address.errors.full_messages_for(:district).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </p>
   <p>
     <%= form.label :street, "Rua" %><br>
     <%= form.text_field :street %>
+    <% @address.errors.full_messages_for(:street).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </p>
   <p>
     <%= form.label :number, "Número" %><br>
     <%= form.text_field :number %>
+    <% @address.errors.full_messages_for(:number).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </p>
   <p>
     <%= form.submit "Adicionar endereço"%>
