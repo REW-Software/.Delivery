@@ -11,14 +11,6 @@ When('Eu clico no botao {string}') do |button_name|
   click_last_button button_name
 end
 
-When('Eu clico em editar') do 
-  click_link 'Editar'
-end
-
-When('Eu clico em deletar') do
-  click_link 'Deletar'
-end
-
 When ('Eu confirmo a acao') do
   page.driver.browser.switch_to.alert.accept
 end
