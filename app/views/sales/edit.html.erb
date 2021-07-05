@@ -1,24 +1,3 @@
 <%= link_to "Voltar", sale_path(@sale, :post_id => @post.id) %>
 <h1>Editar venda</h1>
-<%= form_with model: @sale do |form| %>
-  <div>
-    <%= form.label :client_name, "Nome do cliente" %><br>
-    <%= form.select :client_name, @clients.collect {|client| [client.name, client.email]} %>
-    <% @sale.errors.full_messages_for(:client_name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :payment_type, "Pagamento" %><br>
-    <%= form.select :payment_type, [['Dinheiro', :money], ['Cartão', :card]] %>
-    <% @sale.errors.full_messages_for(:payment_type).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <%= hidden_field_tag(:post_id, @post.id) %>
-  <div>
-    <%= form.submit "Atualizar Venda"%>
-  </div>
-<% end %>
+<%= render "form", {sale: @sale, clients: @clients, post: @post, button_text: "Atualizar Venda"} %>
