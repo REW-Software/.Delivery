@@ -1,16 +1,32 @@
-<% if logged_in? %>
-  <% if isAdmin? %>
-    <%= link_to "Voltar", posts_path %>
-  <% else %>
-    <%= link_to "Voltar", home_path %>
-  <% end %>
-<% end %>
 
-<h2><%= title %></h2>
-<ul>
-  <% deliveries.each do |delivery| %>
-    <li>
-      <%= link_to "Entrega #{delivery.id}", delivery %>
-    </li>
-  <% end %>
-</ul>
+
+<div class="p-5 ">
+  <div class="d-flex align-items-center justify-content-space-between">
+    <div>
+      <h3><%= title %></h3>
+    </div>
+
+    <% if logged_in? %>
+      <% if isAdmin? %>
+        <div class="mx-auto btn btn-info">
+          <%= link_to "Voltar", posts_path, class: "text-light text-decoration-none" %>
+        </div>
+      <% else %>
+        <div class="mx-auto btn btn-info">
+          <%= link_to "Voltar", home_path, class: "text-light text-decoration-none" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+    <div class="mt-5">
+      <ul class="navbar-nav">
+        <% deliveries.each do |delivery| %>
+          <li class="nav-item">
+            <%= link_to "Entrega #{delivery.id}", delivery, class: "h5 text-warning text-decoration-none" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

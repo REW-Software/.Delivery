@@ -1,3 +1,15 @@
-<%= link_to "Voltar", post_path(@post) %>
-<h1>Nova venda</h1>
-<%= render "form", {sale: @sale, clients: @clients, post: @post, button_text: "Criar Venda"} %>
+<div>
+  <div class="p-5 ">
+    <div class="d-flex align-items-center justify-content-space-between">
+      <div>
+        <h1>Nova venda</h1>
+      </div>
+
+      <div class="mx-auto btn btn-info">
+        <%= link_to "Voltar", post_path(@post), class: "text-light text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "form", {sale: @sale, clients: @clients, post: @post, button_text: "Criar Venda"} %>
+</div>

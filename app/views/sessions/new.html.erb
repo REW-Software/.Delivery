@@ -1,29 +1,44 @@
-<div class="row justify-content-center mt-5">
-  <div class="col-5 border shadow rounded p-4">
-    <h1 class="font-weight-lighter text-center">Ponto Delivery</h1>
-    <%= form_for :session, url: sign_in_path, class: "form-horizontal" do |form| %>
+<div class="d-flex justify-content-center">
+  <div class="pt-5">
+    <div class="pt-5">
+      <div class="pt-5">
+        <div class="pt-5">
+          <div class="pt-5">
+            <div class="px-5 pt-3 pb-3 border shadow rounded">
 
-      <div class="form-group p-1">
-        <%= form.label :email, "Email" %>
-        <%= form.email_field :email, autofocus: true, id: "loginEmail", class: "form-control" %>
+              <%= form_for :session, url: sign_in_path do |form| %>
+                <div class="text-center mt-2">
+                  <h1>.Delivery</h1>
+                </div>
+
+                <div class="mt-5">
+                  <%= form.label :email, "Email" %><br />
+                  <%= form.email_field :email, autofocus: true, id: "loginEmail", class: "form-control" %>
+                </div>
+
+                <div class="mt-3">
+                  <%= form.label :password, "Senha" %><br />
+                  <%= form.password_field :password, autocomplete: "off", id: "loginPassword", class: "form-control" %>
+                </div>
+
+                <div class="mt-3">
+                  <%= form.submit "Entrar", class: "mt-3 w-100 btn btn-lg btn-primary" %>
+
+                  <% if @error %>
+                    <div><p class="text-danger mt-2">usuário não encontrado!</p></div>
+                  <% end %>
+                </div>
+
+
+                <div class="mt-5">
+                  <p>Novo usuário? <%= link_to "Se inscreva agora!", new_user_path(:newClient => 1), class: "text-decoration-none" %></p>
+                <div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="form-group p-1">
-        <%= form.label :password, "Senha" %><br />
-        <%= form.password_field :password, autocomplete: "off", id: "loginPassword", class: "form-control" %>
-      </div>
-
-      <div class="form-group p-1", align="center">
-        <%= form.submit "Entrar", class: "btn btn-outline-primary btn-block mt-4" %>
-        <% if @error %>
-          <div><p>Usuário não encontrado!</p></div>
-        <% end %>
-      </div>
-    <% end %>
-
-    <div class="p-1", align="center">
-      Novo usuario?
-      <%= link_to "Se inscreva agora!", new_user_path(:new_user_non_admin => 1) %>
     </div>
   </div>
 </div>
