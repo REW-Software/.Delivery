@@ -22,7 +22,7 @@ com orientação do professor Rodrigo Cardoso Amaral de Andrade.
 
 🚀 [*Heroku*](https://ponto-delivery.herokuapp.com/)
 
-**Login admin para**
+**Login para admin**
 
 > login: admin@admin.com
 > senha: admin1
