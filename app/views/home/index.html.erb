@@ -1,12 +1,22 @@
-<h1>Ponto Delivery</h1>
-<br/>
+<div class="mt-5 container">
+  <div class="mx-5">
+    <% if @user.user_type == 'Administrador' %>
+      <div class="btn btn-lg btn-info">
+        <%= link_to "Usuários", users_path, class: "text-light text-decoration-none" %>
+      </div>
 
-<% if @user.user_type == 'Administrador' %>
-  <%= link_to "Usuários", users_path %>
-  <br/>
-  <%= link_to "Entregas", posts_path %>
-<% else %>
-  <%= link_to "Entregas abertas", openDeliveries_path %>
-  <br/>
-  <%= link_to "Entregas concluidas", closedDeliveries_path %>
-<% end %>
+      <div class="mx-3 btn btn-lg btn-info">
+        <%= link_to "Entregas", posts_path, class: "text-light text-decoration-none" %>
+      </div>
+      
+    <% else %>
+      <div class="btn btn-lg btn-info">
+        <%= link_to "Entregas abertas", openDeliveries_path, class: "text-light text-decoration-none" %>
+      </div>
+
+      <div class="mx-3 btn btn-lg btn-info">
+        <%= link_to "Entregas concluidas", closedDeliveries_path, class: "text-light text-decoration-none" %>
+      </div>
+    <% end %>
+  </div>
+</div>
