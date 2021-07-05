@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authorize, except: %i[new create]
   before_action :correct_user?, except: %i[index new create]
   before_action :authorizeAdmin, only: %i[index new create]
-  
+
   def index
     @users = User.all
   end
@@ -45,8 +45,13 @@ class UsersController < ApplicationController
     if @user.user_type == 'Administrador'
       redirect_to @user
     else
-      @user.destroy
-      redirect_to users_path
+      @post = Post.find_by(user_id: @user.id)
+      if @post
+        redirect_to @user
+      else
+        @user.destroy
+        redirect_to users_path
+      end
     end
   end
 
