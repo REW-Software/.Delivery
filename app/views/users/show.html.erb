@@ -1,30 +1,45 @@
-<%= link_to "Voltar", users_path %>
-<h1>Perfil de usuário</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Nome</th>
-    <th>Nascimento</th>
-    <th>Email</th>
-    <th>CPF</th>
-    <th>RG</th>
-    <th>Perfil de usuário</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @user.name %></td>
-      <td><%= @user.birth %></td>
-      <td><%= @user.email %></td>
-      <td><%= @user.cpf %></td>
-      <td><%= @user.rg %></td>
-      <td><%= @user.user_type %></td>
-      <td><%= link_to "Endereço", user_address_path(:user_id => @user.id)  %></td>
-      <td><%= link_to "Editar", edit_user_path(@user) , id:'Editar', name:'Editar'%></td>
-      <% if @user.user_type != 'Administrador' %>
-        <td><%= link_to "Deletar", user_path(@user), method: :delete,
-                        data: {confirm: "Você está seguro desta ação?"} %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<div class="p-5 ">
+  <div class="d-flex align-items-center justify-content-space-between">
+    <div>
+      <h1>Perfil de usuário</h1>
+    </div>
+
+    <div class="mx-auto btn btn-info">
+      <%= link_to "Voltar", home_path, class: "text-light text-decoration-none" %>
+    </div>
+  </div>
+  
+  <div class="mt-5">
+    <table class="table">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Nome</th>
+          <th scope="col">Nascimento</th>
+          <th scope="col">Email</th>
+          <th scope="col">CPF</th>
+          <th scope="col">RG</th>
+          <th scope="col">Perfil de usuário</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><%= @user.name %></td>
+          <td><%= @user.birth %></td>
+          <td><%= @user.email %></td>
+          <td><%= @user.cpf %></td>
+          <td><%= @user.rg %></td>
+          <td><%= @user.user_type %></td>
+          
+          <td><%= link_to "Endereço", user_address_path(:user_id => @user.id), class: "h6 text-warning text-decoration-none" %></td>
+          <td><%= link_to "Editar", edit_user_path(@user) , id:'Editar', name:'Editar', class: "h6 text-warning text-decoration-none" %></td>
+
+          <% if @user.user_type != 'Administrador' %>
+            <td><%= link_to "Deletar", user_path(@user), class: "h6 text-warning text-decoration-none", method: :delete,
+                            data: {confirm: "Você está seguro desta ação?"} %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
