@@ -22,6 +22,11 @@ class AddressesController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @address = @user.address
 
+    if params[:sale_back].present?
+      @post = Post.find(params[:post_id])
+      @sale = @post.sales.find(params[:sale_back])
+    end
+
     unless @address.present?
       redirect_to new_user_address_path
     end

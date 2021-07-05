@@ -7,7 +7,11 @@
       </div>
 
       <div class="mx-auto btn btn-info">
-        <%= link_to "Voltar", user_path(@user), class: "text-light text-decoration-none"%>
+        <% if @sale.present? %>
+          <%= link_to "Voltar", sale_path(@sale, :post_id => @post.id), class: "text-light text-decoration-none"%>
+        <% else %>
+          <%= link_to "Voltar", user_path(@user), class: "text-light text-decoration-none"%>
+        <% end %>
       </div>
 
     </div>
@@ -34,7 +38,7 @@
 
             <% if logged_in? %>
               <% if isAdmin? or correct_user %>
-                <td><%= link_to "Editar", edit_user_address_path(:user_id => @user.id) %></td>
+                <td><%= link_to "Editar", edit_user_address_path(:id => @user.id) %></td>
               <% end %>
             <% end %>
           </tr>
