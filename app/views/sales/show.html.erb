@@ -1,40 +1,55 @@
-<%= link_to "Voltar", @post %>
-<h1>Informações venda</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Cliente</th>
-    <th>Pagamento</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><%= link_to @client.name, user_address_path(:user_id => @client.id)  %></td>
-    <% case @sale.payment_type %>
-    <% when 'money' %>
-      <td>Em dinheiro</td>
-    <% when 'card' %>
-      <td>No cartão</td>
-    <% end %>
-    <% if logged_in? %>
-      <% if isAdmin? %>
-        <td><%= link_to "Editar", edit_sale_path(@sale, :post_id => @post.id) %></td>
-        <td><%= link_to "Deletar", sale_path(@sale, :post_id => @post.id), method: :delete,
-                        data: {confirm: "Você está seguro desta ação?"} %></td>
-        <td><%= link_to "Adicionar produto na venda", new_product_path(:sale_id => @sale.id, :post_id => @post.id) %></td>
-      <% end %>
-    <% end %>
-  </tr>
-  </tbody>
-</table>
+<div class="p-5 ">
+  <div class="d-flex align-items-center justify-content-space-between">
+    <div>
+      <h1>Informações venda</h1>
+    </div>
+
+    <div class="mx-auto btn btn-info">
+      <%= link_to "Voltar", @post, class: "text-light text-decoration-none" %>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <table class="table">
+    <thead>
+    <tr class="table-info">
+      <th scope="col">Cliente</th>
+      <th scope="col">Pagamento</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= link_to @client.name, user_address_path(:user_id => @client.id)  %></td>
+        <% case @sale.payment_type %>
+          <% when 'money' %>
+            <td>Em dinheiro</td>
+          <% when 'card' %>
+            <td>No cartão</td>
+        <% end %>
+
+        <% if logged_in? %>
+          <% if isAdmin? %>
+            <td><%= link_to "Editar", edit_sale_path(@sale, :post_id => @post.id), class: "h6 text-warning text-decoration-none" %></td>
+            <td><%= link_to "Deletar", sale_path(@sale, :post_id => @post.id), class: "h6 text-warning text-decoration-none", method: :delete,
+                            data: {confirm: "Você está seguro desta ação?"} %></td>
+            <td><%= link_to "Adicionar produto na venda", new_product_path(:sale_id => @sale.id, :post_id => @post.id), class: "h6 text-warning text-decoration-none" %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <h3>Produtos</h3>
-  <ul>
-    <% @products.each do |product| %>
-      <li>
-        <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id) %>
-        <%= product.product_quantity %> unidades
-      </li>
-    <% end %>
-  </ul>
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id) %>
+      <%= product.product_quantity %> unidades
+    </li>
+  <% end %>
+</ul>
+
 <p><%= "Preço total: #{@total_price}" %></p>

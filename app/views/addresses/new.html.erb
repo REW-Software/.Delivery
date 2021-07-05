@@ -1,2 +1,15 @@
-<h1>Adicionar Endereço</h1>
-<%= render "form", {address: @address, users: @users, button_text: "Adicionar endereço", url: user_addresses_path} %>
+<div>
+  <div class="p-5 ">
+    <div class="d-flex align-items-center justify-content-space-between">
+      <div>
+        <h1>Adicionar Endereço</h1>
+      </div>
+
+      <div class="mx-auto btn btn-info">
+        <%= link_to "Voltar", :back, class: "text-light text-decoration-none" %>
+      </div>
+    </div>
+
+    <%= render "form", {address: @address, users: @users, button_text: "Adicionar endereço", url: user_addresses_path} %>
+  </div>
+</div>

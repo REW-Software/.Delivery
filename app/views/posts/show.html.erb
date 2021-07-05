@@ -1,48 +1,68 @@
-<% case @post.status %>
-<% when 'progress' %>
-  <%= link_to "Voltar", openDeliveries_path %>
-<% when 'concluded' %>
-  <%= link_to "Voltar", closedDeliveries_path %>
-<% end %>
+<div class="p-5 ">
+  <div class="d-flex align-items-center justify-content-space-between">
+    <div>
+      <h1>Informações da entrega</h1>
+    </div>
 
-
-<h1>Informações da entrega</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Status da entrega</th>
-    <th>Entregador</th>
-    <th>Requisição da entrega</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
     <% case @post.status %>
-    <% when 'progress' %>
-      <td>Em andamento</td>
-    <% when 'concluded' %>
-      <td>Concluído</td>
+      <% when 'progress' %>
+        <div class="mx-auto btn btn-info">
+          <%= link_to "Voltar", openDeliveries_path, class: "text-light text-decoration-none" %>
+        </div>
+
+      <% when 'concluded' %>
+        <div class="mx-auto btn btn-info">
+          <%= link_to "Voltar", closedDeliveries_path, class: "text-light text-decoration-none" %>
+        </div>
     <% end %>
-    <td><%= @delivery_man.name %></td>
-    <td><%= @post_time.strftime("%-d/%-m/%y %H:%M")%></td>
-    <td><%= link_to "Editar", edit_post_path(@post) %></td>
-    <% if logged_in? %>
-      <% if isAdmin? %>
-        <td><%= link_to "Adicionar venda", new_sale_path(:post_id => @post.id) %></td>
-        <td><%= link_to "Deletar", post_path(@post), method: :delete,
-                        data: {confirm: "Você está seguro desta ação?"} %></td>
+  </div>
+
+
+  <div class="mt-5">
+    <table class="table">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Status da entrega</th>
+          <th scope="col">Entregador</th>
+          <th scope="col">Requisição da entrega</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <% case @post.status %>
+            <% when 'progress' %>
+              <td>Em andamento</td>
+            <% when 'concluded' %>
+              <td>Concluído</td>
+          <% end %>
+
+          <td><%= @delivery_man.name %></td>
+          <td><%= @post_time.strftime("%-d/%-m/%y %H:%M")%></td>
+
+          <td><%= link_to "Editar", edit_post_path(@post), class: "h6 text-warning text-decoration-none" %></td>
+
+          <% if logged_in? %>
+            <% if isAdmin? %>
+              <td><%= link_to "Adicionar venda", new_sale_path(:post_id => @post.id), class: "h6 text-warning text-decoration-none" %></td>
+              <td><%= link_to "Deletar", post_path(@post), class: "h6 text-warning text-decoration-none", method: :delete,
+                              data: {confirm: "Você está seguro desta ação?"} %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-5">
+    <h3>Vendas</h3>
+
+    <ul>
+      <% @sales.each do |sale| %>
+        <li>
+          <%= link_to "Vizualizar detalhes de venda", sale_path(sale, :post_id => @post.id) %>
+        </li>
       <% end %>
-    <% end %>
-
-  </tr>
-  </tbody>
-</table>
-
-<h3>Vendas</h3>
-<ul>
-  <% @sales.each do |sale| %>
-    <li>
-      <%= link_to "Vizualizar detalhes de venda", sale_path(sale, :post_id => @post.id) %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+</div>

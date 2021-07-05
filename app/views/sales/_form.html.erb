@@ -1,22 +1,36 @@
 <%= form_with model: @sale do |form| %>
-  <div>
-    <%= form.label :client_name, "Nome do cliente" %><br>
-    <%= form.select :client_name, @clients.collect {|client| [client.name, client.email]} %>
-    <% @sale.errors.full_messages_for(:client_name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+  <div class="mx-5">
+    <div class="d-flex row w-50 mt-1">
+      <div class="h5">
+        <%= form.label :client_name, "Nome do cliente", class: "text-info" %>
+      </div>
 
-  <div>
-    <%= form.label :payment_type, "Pagamento" %><br>
-    <%= form.select :payment_type, [['Dinheiro', :money], ['Cartão', :card]] %>
-    <% @sale.errors.full_messages_for(:payment_type).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+      <div>
+        <%= form.select :client_name, @clients.collect {|client| [client.name, client.email]}, class: "form-select" %>
+      </div>
+    
+      <% @sale.errors.full_messages_for(:client_name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
-  <%= hidden_field_tag(:post_id, @post.id) %>
-  <div>
-    <%= form.submit button_text %>
+    <div class="d-flex row w-50 mt-4">
+      <div class="h5">
+        <%= form.label :payment_type, "Pagamento", class: "text-info" %>
+      </div>
+
+      <div>
+        <%= form.select :payment_type, [['Dinheiro', :money], ['Cartão', :card]], class: "form-select" %>
+      </div>
+
+      <% @sale.errors.full_messages_for(:payment_type).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <%= hidden_field_tag(:post_id, @post.id) %>
+    <div class="mt-5">
+      <%= form.submit button_text, class: "btn btn-lg btn-primary" %>
+    </div>
   </div>
 <% end %>
