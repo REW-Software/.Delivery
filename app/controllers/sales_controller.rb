@@ -7,7 +7,7 @@ class SalesController < ApplicationController
     @sale = @post.sales.find(params[:id])
     @products = @sale.products
     @client = User.find_by(email: @sale.client_name)
-    @total_price = 0
+    @total_price = total_price(@products)
   end
 
   def new
@@ -55,5 +55,13 @@ class SalesController < ApplicationController
   private
   def sale_params
     params.require(:sale).permit(:payment_type, :client_name)
+  end
+
+  def total_price(products)
+    total = 0
+    products.each do |product|
+      total += (product.price - product.discount ) * product.product_quantity
+    end
+    return total
   end
 end
