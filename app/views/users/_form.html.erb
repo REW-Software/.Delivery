@@ -1,73 +1,107 @@
 <%= form_with model: @user do |form| %>
-  <div>
-    <%= form.label :name, "Nome" %><br>
-    <%= form.text_field :name , id: "newUserName", placeholder: "Seu nome"  %>
-    <% @user.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+  <div class="mx-5">
+    <div class="d-flex row w-50 mt-1">
+      <div class="h5">
+        <%= form.label :name, "Nome", class: "text-info" %>
+      </div>
+
+      <%= form.text_field :name , id: "newUserName", placeholder: "Seu nome" %>
+
+      <% @user.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :birth, "Nascimento", class: "text-info" %>
+      </div>
+
+      <%= form.date_field :birth , id: "newUserBirth"  %>
+
+      <% @user.errors.full_messages_for(:birth).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :email, "Email", class: "text-info" %>
+      </div>
+
+      <%= form.email_field :email , id: "newUserEmail", placeholder: "seuEmail@mail.com" %>
+
+      <% @user.errors.full_messages_for(:email).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :cpf, "CPF", class: "text-info" %>
+      </div>
+
+      <%= form.text_field :cpf , id: "newUserCPF", placeholder: "xxx.xxx.xxx-xx" %>
+
+      <% @user.errors.full_messages_for(:cpf).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :rg, "RG", class: "text-info" %>
+      </div>
+
+      <%= form.text_field :rg  , id: "newUserRG", placeholder: "xxxxxxx" %>
+
+      <% @user.errors.full_messages_for(:rg).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :user_type, "Perfil de usuário", class: "text-info" %>
+      </div>
+
+      <% if @new_user_non_admin %>
+        <%= form.select :user_type, ['DeliveryMan'] , id: "newUserTipo"  %>
+      <% else %>
+        <%= form.select :user_type, ['DeliveryMan', 'Cliente'] , id: "newUserTipo" %>
+      <% end %>
+
+      <% @user.errors.full_messages_for(:user_type).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :password, "Senha", class: "text-info" %>
+      </div>
+
+      <%= form.password_field :password , id: "newUserPassword", placeholder: "Min. 6" %>
+
+      <% @user.errors.full_messages_for(:password).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="d-flex row w-25 mt-3">
+      <div class="h5">
+        <%= form.label :password_confirmation, "Confirmação de senha", class: "text-info" %>
+      </div>
+
+      <%= form.password_field :password_confirmation , id: "newUserPasswordConfirmation" %>
+
+      <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :birth, "Nascimento" %><br>
-    <%= form.date_field :birth , id: "newUserBirth"  %>
-    <% @user.errors.full_messages_for(:birth).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :email, "Email" %><br>
-    <%= form.email_field :email , id: "newUserEmail", placeholder: "seuEmail@mail.com"  %>
-    <% @user.errors.full_messages_for(:email).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :cpf, "CPF" %><br>
-    <%= form.text_field :cpf , id: "newUserCPF", placeholder: "xxx.xxx.xxx-xx"  %>
-    <% @user.errors.full_messages_for(:cpf).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :rg, "RG" %><br>
-    <%= form.text_field :rg  , id: "newUserRG" %>
-    <% @user.errors.full_messages_for(:rg).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :user_type, "Perfil de usuário" %><br>
-    <% if @user.user_type == 'DeliveryMan' %>
-      <%= form.select :user_type, ['DeliveryMan'] , id: "newUserTipo"  %>
-    <% else %>
-      <%= form.select :user_type, ['Administrador','DeliveryMan', 'Cliente'] , id: "newUserTipo"  %>
-    <% end %>
-    <% @user.errors.full_messages_for(:user_type).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :password, "Senha" %><br>
-    <%= form.password_field :password , id: "newUserPassword", placeholder: "Min. 6" %>
-    <% @user.errors.full_messages_for(:password).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :password_confirmation, "Confirmação de senha" %><br>
-    <%= form.password_field :password_confirmation , id: "newUserPasswordConfirmation" %>
-    <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-
-  <div>
-    <%= form.submit button_text %>
+  <div class="mx-4 mt-4">
+    <%= form.submit button_text, class: "btn w-25 btn-lg btn-primary" %>
   </div>
 <% end %>
