@@ -1,7 +1,17 @@
-<%= link_to "Voltar", home_path %>
-<h1>Listagem de entregas</h1>
-<%= link_to "Adicionar entrega", new_post_path %>
-<br/>
-<%= link_to "Entregas abertas", openDeliveries_path %>
-<br/>
-<%= link_to "Entregas concluidas", closedDeliveries_path %>
+<div class="m-5 container">
+  <h1>Entregas</h1>
+
+  <div class="mt-3">
+    <div class="btn btn-info">
+      <%= link_to "Adicionar entrega", new_post_path, class: "text-light text-decoration-none" %>
+    </div>
+
+    <div class="mx-3 btn btn-info">
+      <%= link_to "Entregas abertas", openDeliveries_path, class: "text-light text-decoration-none" %>
+    </div>
+
+    <div class="btn btn-info">
+      <%= link_to "Entregas concluidas", closedDeliveries_path, class: "text-light text-decoration-none" %>
+    </div>
+  </div>
+</div>
