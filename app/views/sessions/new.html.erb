@@ -1,20 +1,29 @@
-<h1>Ponto Delivery</h1>
+<div class="row justify-content-center mt-5">
+  <div class="col-5 border shadow rounded p-4">
+    <h1 class="font-weight-lighter text-center">Ponto Delivery</h1>
+    <%= form_for :session, url: sign_in_path, class: "form-horizontal" do |form| %>
 
-<%= form_for :session, url: sign_in_path do |form| %>
-  <div class="field">
-    <%= form.label :email, "Email" %><br />
-    <%= form.email_field :email, autofocus: true, id: "loginEmail" %>
-  </div>
+      <div class="form-group p-1">
+        <%= form.label :email, "Email" %>
+        <%= form.email_field :email, autofocus: true, id: "loginEmail", class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :password, "Senha" %><br />
-    <%= form.password_field :password, autocomplete: "off", id: "loginPassword" %>
-  </div>
-  <div class="actions">
-    <%= form.submit "Entrar" %>
-    <% if @error %>
-      <div><p>Usuário não encontrado!</p></div>
+      <div class="form-group p-1">
+        <%= form.label :password, "Senha" %><br />
+        <%= form.password_field :password, autocomplete: "off", id: "loginPassword", class: "form-control" %>
+      </div>
+
+      <div class="form-group p-1", align="center">
+        <%= form.submit "Entrar", class: "btn btn-outline-primary btn-block mt-4" %>
+        <% if @error %>
+          <div><p>Usuário não encontrado!</p></div>
+        <% end %>
+      </div>
     <% end %>
+
+    <div class="p-1", align="center">
+      Novo usuario?
+      <%= link_to "Se inscreva agora!", new_user_path(:new_user_non_admin => 1) %>
+    </div>
   </div>
-  <p>Novo usuario? <%= link_to "Se inscreva agora!", new_user_path(:new_user_non_admin => 1) %></p>
-<% end %>
+</div>
