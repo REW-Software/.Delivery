@@ -20,7 +20,7 @@
 
     <tbody>
       <tr>
-        <td><%= link_to @client.name, user_address_path(:user_id => @client.id, :sale_back => @sale.id, :post_id => @post.id), class: "h5 text-warning text-decoration-none  %></td>
+        <td><%= link_to @client.name, user_address_path(:user_id => @client.id, :sale_back => @sale.id, :post_id => @post.id), class: "h5 text-warning text-decoration-none"  %></td>
         <% case @sale.payment_type %>
           <% when 'money' %>
             <td>Em dinheiro</td>
