@@ -11,9 +11,14 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <%= render 'layouts/header' %>
-    <% end %>
-    <%= yield %>
+    <div class="container" >
+      <% if logged_in? %>
+        <%= render 'layouts/header' %>
+      <% end %>
+      
+      <div class="container-fluid mt-2 col-md-12 p-2 ">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
