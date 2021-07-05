@@ -15,6 +15,8 @@ module Seeds
     user.save
     deliveryMan.save
     client.save
+
+    address = client.create_address(cep: '55835-000', city: "Chá de Alegria", district: "Centro", street: "R. Fernances Vieira", number: '4')
   end
 end
 
