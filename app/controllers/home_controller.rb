@@ -17,9 +17,9 @@ class HomeController < ApplicationController
 
   def get_posts_by_user_and_status(user_id,  status)
     if logged_in? and isAdmin?
-      Post.where('status = ' + status.to_s)
+      Post.where(["status = ?", status])
     else
-      Post.where('user_id = ? and status = ' + status.to_s, user_id)
+      Post.where(["user_id = ? and status = ?", user_id , status])
     end
   end
 end
