@@ -1,14 +1,48 @@
-<%= link_to "Voltar", :back %>
-<h3>Endereço de <%= @user.name %> </h3>
-<ul>
-  <li>CEP: <%= @address.cep %></li>
-  <li>Cidade: <%= @address.city %></li>
-  <li>Bairro: <%= @address.district %></li>
-  <li>Rua: <%= @address.street %></li>
-  <li>Número: <%= @address.number %></li>
-  <% if logged_in? %>
-    <% if isAdmin? or correct_user %>
-      <td><%= link_to "Editar", edit_user_address_path(:user_id => @user.id) %></td>
-    <% end %>
-  <% end %>
-</ul>
+<div>
+  <div class="p-5 ">
+    <div class="d-flex align-items-center justify-content-space-between">
+
+      <div>
+        <h3>Endereço de <%= @user.name %> </h3>
+      </div>
+
+      <div class="mx-auto btn btn-info">
+        <%= link_to "Voltar", user_path(@user), class: "text-light text-decoration-none"%>
+      </div>
+
+    </div>
+
+      <div class="mt-5">
+        <table class="table">
+          <thead>
+          <tr class="table-info">
+            <th scope="col">CEP</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Rua</th>
+            <th scope="col">Número</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td><%= @address.cep %></td>
+            <td><%= @address.city %></td>
+            <td><%= @address.district %></td>
+            <td><%= @address.street %></td>
+            <td><%= @address.number %></td>
+
+            <% if logged_in? %>
+              <% if isAdmin? or correct_user %>
+                <td><%= link_to "Editar", edit_user_address_path(:user_id => @user.id) %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+  </div>
+</div>
