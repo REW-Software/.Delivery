@@ -57,10 +57,10 @@
   <div class="mt-5">
     <h3>Vendas</h3>
 
-    <ul>
+    <ul class="navbar-nav">
       <% @sales.each do |sale| %>
-        <li>
-          <%= link_to "Vizualizar detalhes de venda", sale_path(sale, :post_id => @post.id) %>
+        <li class="px-5 mt-2 nav-item">
+          <%= link_to "Vizualizar detalhes de venda", sale_path(sale, :post_id => @post.id), class: "h6 text-info nav-link" %>
         </li>
       <% end %>
     </ul>
