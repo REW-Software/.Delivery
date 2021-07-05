@@ -1,27 +1,40 @@
-<%= link_to "Voltar", sale_path(@sale, :post_id => @post.id) %>
-<h1>Produto</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Nome</th>
-    <th>Preço</th>
-    <th>Desconto</th>
-    <th>Quantidade</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @product.name %></td>
-      <td><%= number_to_currency @product.price, unit: "R$" %></td>
-      <td><%= number_to_currency @product.discount, unit: "R$" %></td>
-      <td><%= @product.product_quantity %></td>
-      <% if logged_in? %>
-        <% if isAdmin? %>
-          <td><%= link_to "Editar", edit_product_path(@product, :sale_id => @sale.id, :post_id => @post.id) %></td>
-          <td><%= link_to "Deletar", product_path(@product, :sale_id => @sale.id, :post_id => @post.id), method: :delete,
-                          data: {confirm: "Você está seguro desta ação?"} %></td>
-        <% end %>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<div class="p-5 ">
+  <div class="d-flex align-items-center justify-content-space-between">
+    <div>
+      <h1>Produto</h1>
+    </div>
+
+    <div class="mx-auto btn btn-info">
+      <%= link_to "Voltar", sale_path(@sale, :post_id => @post.id), class: "h6 text-light text-decoration-none" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <table class="table">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Nome</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Desconto</th>
+          <th scope="col">Quantidade</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><%= @product.name %></td>
+          <td><%= number_to_currency @product.price, unit: "R$" %></td>
+          <td><%= number_to_currency @product.discount, unit: "R$" %></td>
+          <td><%= @product.product_quantity %></td>
+          <% if logged_in? %>
+            <% if isAdmin? %>
+              <td><%= link_to "Editar", edit_product_path(@product, :sale_id => @sale.id, :post_id => @post.id), class: "h6 text-warning text-decoration-none" %></td>
+              <td><%= link_to "Deletar", product_path(@product, :sale_id => @sale.id, :post_id => @post.id), class: "h6 text-warning text-decoration-none", method: :delete,
+                              data: {confirm: "Você está seguro desta ação?"} %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

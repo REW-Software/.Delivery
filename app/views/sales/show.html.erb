@@ -47,7 +47,7 @@
     <ul class="navbar-nav">
       <% @products.each do |product| %>
         <li class="mt-2 nav-item">
-          <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id), class: "h5 text-dark text-decoration-none" %>
+          <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id), class: "h5 text-warning text-decoration-none" %>
           <%= product.product_quantity %> unidades
         </li>
       <% end %>
