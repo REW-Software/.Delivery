@@ -38,7 +38,7 @@ class SalesController < ApplicationController
     @sale = @post.sales.find(params[:id])
 
     if @sale.update(sale_params)
-      redirect_to sale_path(@sale, :post_id => @post.id)
+      redirect_to sale_path(@sale, post_id: @post.id)
     else
       render :edit
     end
