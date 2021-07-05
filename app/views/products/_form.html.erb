@@ -1,32 +1,44 @@
 <%= form_with model: @product do |form| %>
-  
-    <div class="field">
-      <%= form.label :name, "Nome do produto" %>
-      <%= form.text_field :name %>
+  <div class="mx-5">
+    <div class="d-flex row w-50 mt-1">
+      <div class="h5">
+        <%= form.label :name, "Nome do produto", class: "text-info" %>
+      </div>
+
+      <%= form.text_field :name, class: "w-50 mx-2" %>
       <% @product.errors.full_messages_for(:name).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
   
-    <div class="field">
-      <%= form.label :price, "Preço(por unidade)" %>
-      <%= form.number_field :price, min: 0.0, step: 0.01 %>
+    <div class="d-flex row w-50 mt-3">
+      <div class="h5">
+        <%= form.label :price, "Preço (por unidade)", class: "text-info" %>
+      </div>
+
+      <%= form.number_field :price, min: 0.0, step: 0.01, class: "w-25  mx-2" %>
       <% @product.errors.full_messages_for(:price).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
 
-    <div class="field">
-      <%= form.label :discount, "Desconto(por unidade)" %>
-      <%= form.number_field :discount, min: 0.0, step: 0.01 %>
+    <div class="d-flex row w-50 mt-3">
+      <div class="h5">
+        <%= form.label :discount, "Desconto (por unidade)", class: "text-info" %>
+      </div>
+
+      <%= form.number_field :discount, min: 0.0, step: 0.01, class: "w-25 mx-2" %>
       <% @product.errors.full_messages_for(:discount).each do |message| %>
         <div><%= message %></div>
       <% end %>
     </div>
 
-    <div>
-      <%= form.label :product_quantity, "Quantidade" %><br>
-      <%= form.number_field :product_quantity, min: 1, steps: 1 %>
+    <div class="d-flex row w-50 mt-3">
+      <div class="h5">  
+        <%= form.label :product_quantity, "Quantidade", class: "text-info" %>
+      </div>
+
+      <%= form.number_field :product_quantity, min: 1, steps: 1, class: "w-25 mx-2" %>
       <% @product.errors.full_messages_for(:product_quantity).each do |message| %>
         <div><%= message %></div>
       <% end %>
@@ -34,7 +46,8 @@
 
     <%= hidden_field_tag(:sale_id, @sale.id) %>
     <%= hidden_field_tag(:post_id, @post.id) %>
-    <div class="actions">
-      <%= form.submit button_text %>
+    <div class="mt-5">
+      <%= form.submit button_text, class: "w-25 btn btn-lg btn-primary" %>
     </div>
+  </div>
 <% end %>

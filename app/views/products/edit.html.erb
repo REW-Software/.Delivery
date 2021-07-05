@@ -1,3 +1,15 @@
-<%= link_to "Voltar", :back %>
-<h1>Editar Produto</h1>
-<%= render "form", {product: @product, post: @post, button_text: 'Salvar'} %>
+<div>
+  <div class="p-5 ">
+    <div class="d-flex align-items-center justify-content-space-between">
+      <div>
+        <h1>Editar Produto</h1>
+      </div>
+
+      <div class="mx-auto btn btn-info">
+        <%= link_to "Voltar", :back, class: "text-light text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "form", {product: @product, post: @post, button_text: 'Salvar'} %>
+</div>

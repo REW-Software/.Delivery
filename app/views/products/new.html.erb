@@ -1,3 +1,15 @@
-<%= link_to "Voltar", sale_path(@sale, :post_id => @post.id) %>
-<h1>Produto</h1>
-<%= render "form", {sale: @sale, product: @product, post: @post, button_text: 'Criar'} %>
+<div>
+  <div class="p-5 ">
+    <div class="d-flex align-items-center justify-content-space-between">
+      <div>
+        <h1>Editar Produto</h1>
+      </div>
+
+      <div class="mx-auto btn btn-info">
+        <%= link_to "Voltar", sale_path(@sale, :post_id => @post.id), class: "text-light text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "form", {sale: @sale, product: @product, post: @post, button_text: 'Criar'} %>
+</div>
