@@ -34,7 +34,6 @@
       <li>
         <%= link_to product.name, product_path(product, :sale_id => @sale.id, :post_id => @post.id) %>
         <%= product.product_quantity %> unidades
-        <% @total_price += (product.price - product.discount ) * product.product_quantity %>
       </li>
     <% end %>
   </ul>

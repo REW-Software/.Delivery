@@ -1,16 +1,1 @@
-<% if logged_in? %>
-  <% if isAdmin? %>
-    <%= link_to "Voltar", posts_path %>
-  <% else %>
-    <%= link_to "Voltar", home_path %>
-  <% end %>
-<% end %>
-
-<h2>Entregas em andamento</h2>
-<ul>
-  <% @open_deliveries.each do |delivery| %>
-    <li>
-      <%= link_to "Entrega #{delivery.id}", delivery %>
-    </li>
-  <% end %>
-</ul>
+<%= render "deliveries", {deliveries: @open_deliveries, title: "Entregas em andamento"} %>

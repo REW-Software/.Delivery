@@ -8,18 +8,18 @@ class HomeController < ApplicationController
   end
 
   def openDeliveries
-    @open_deliveries = if logged_in? and isAdmin?
-                         Post.where('status = 0')
-                       else
-                         Post.where('user_id = ? and status = 0', session[:user_id])
-                       end
+    @open_deliveries = get_posts_by_user_and_status(session[:user_id], 0)
   end
 
   def closedDeliveries
-    @closed_deliveries = if logged_in? and isAdmin?
-                           Post.where('status = 1')
-                         else
-                           Post.where('user_id = ? and status = 1', session[:user_id])
-                         end
+    @closed_deliveries = get_posts_by_user_and_status(session[:user_id], 1)
+  end
+
+  def get_posts_by_user_and_status(user_id,  status)
+    if logged_in? and isAdmin?
+      Post.where(["status = ?", status])
+    else
+      Post.where(["user_id = ? and status = ?", user_id , status])
+    end
   end
 end

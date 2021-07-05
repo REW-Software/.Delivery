@@ -1,0 +1,16 @@
+<% if logged_in? %>
+  <% if isAdmin? %>
+    <%= link_to "Voltar", posts_path %>
+  <% else %>
+    <%= link_to "Voltar", home_path %>
+  <% end %>
+<% end %>
+
+<h2><%= title %></h2>
+<ul>
+  <% deliveries.each do |delivery| %>
+    <li>
+      <%= link_to "Entrega #{delivery.id}", delivery %>
+    </li>
+  <% end %>
+</ul>
